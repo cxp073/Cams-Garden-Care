@@ -121,7 +121,7 @@ p:last-child { margin-bottom: 0; }
 .area-divider { display: inline-block; margin: 0 0.45rem; color: var(--sage); font-weight: 400; }
 .expansion-line { margin-top: 1.75rem; font-style: italic; font-size: 1.1rem; color: var(--charcoal); }
 .gallery { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
-@media (min-width: 600px) { .gallery { grid-template-columns: 1fr 1fr 1fr; } }
+@media (min-width: 600px) { .gallery { grid-template-columns: 1fr 1fr; } }
 .photo {
   aspect-ratio: 3 / 4;
   background: var(--cream-warm);
@@ -129,7 +129,6 @@ p:last-child { margin-bottom: 0; }
   overflow: hidden;
 }
 .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.photo-wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
 .contact {
   background: var(--green-deep);
   color: var(--cream);
@@ -200,7 +199,7 @@ footer .footer-tagline {
   <div class="container">
     <div class="section-label">About</div>
     <h2>A small, considered weekend round.</h2>
-    <p>I'm Cam. I run a solo lawn-care round across Great Preston, Garforth, Kippax and Allerton Bywater — and now a few lawns in Woodlesford. It's a weekend round — and kept that way on purpose.</p>
+    <p class="lead">I'm Cam. I run a solo lawn-care round across Great Preston, Garforth, Kippax and Allerton Bywater — and now a few lawns in Woodlesford. It's a weekend round — and kept that way on purpose.</p>
     <p>Working weekends only means I'm selective about the lawns I take on, and that's deliberate. I'd rather do the whole work on a small number of lawns — the cut, the edges, the seasonal renovation — than rush a mow round as many as I can fit in a day.</p>
     <p class="pull-quote">Same price every time. Same person turning up.</p>
   </div>
@@ -251,7 +250,7 @@ footer .footer-tagline {
       <div class="photo"><img src="images/pat-lawn-stripes.jpg" alt="A freshly striped lawn" loading="lazy"></div>
       <div class="photo"><img src="images/pat-lawn-edge.jpg" alt="A cleanly edged lawn" loading="lazy"></div>
       <div class="photo"><img src="images/garforth-lawn-edge.jpg" alt="A freshly edged lawn in Garforth" loading="lazy" style="object-position: bottom;"></div>
-      <div class="photo photo-wide"><img src="images/pat-lawn-overhead.jpg" alt="A lawn seen from above" loading="lazy"></div>
+      <div class="photo"><img src="images/pat-lawn-overhead.jpg" alt="A lawn seen from above" loading="lazy"></div>
     </div>
   </div>
 </section>
