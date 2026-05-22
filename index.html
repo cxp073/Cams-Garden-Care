@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cam's Garden Care · Looking after lawns, properly · Garforth, Kippax, Allerton Bywater, Great Preston</title>
+<meta name="description" content="A solo weekend lawn-care round in West Yorkshire. Natural methods, no harsh chemicals — proper care, repeated through the season. Serving Garforth, Kippax, Allerton Bywater, Great Preston and Woodlesford.">
+<meta property="og:title" content="Cam's Garden Care · Looking after lawns, properly">
+<meta property="og:description" content="A small weekend lawn-care round across Garforth, Kippax, Allerton Bywater, Great Preston and Woodlesford. Natural methods, no harsh chemicals — proper care, repeated through the season.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-deep: #1f4a2c;
+  --green-darker: #15351f;
+  --cream: #f5efe2;
+  --cream-warm: #ece2cb;
+  --charcoal: #2b2a26;
+  --sage: #8fa28c;
+  --line: rgba(43, 42, 38, 0.15);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.container { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
+.hero {
+  background: var(--green-deep);
+  color: var(--cream);
+  padding: 6rem 2rem 6.5rem;
+  text-align: center;
+  position: relative;
+}
+.logo { display: inline-block; text-align: left; line-height: 1; }
+.logo-cams {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.4rem;
+  letter-spacing: 0.01em;
+  padding-left: 0.15rem;
+}
+.logo-divider { border: 0; border-top: 1.5px solid var(--cream); margin: 0.45rem 0 0.55rem; width: 100%; }
+.logo-main {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: 3.2rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.hero-tagline {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-top: 3.5rem;
+  max-width: 24ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-sub {
+  margin-top: 1.75rem;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+section { padding: 5.5rem 0; }
+section + section { border-top: 1px solid var(--line); }
+.section-label {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  margin-bottom: 1.5rem;
+}
+h2 {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: 2rem;
+  max-width: 18ch;
+}
+.lead { font-size: 1.2rem; line-height: 1.6; font-weight: 300; margin-bottom: 1.5rem; }
+p { margin-bottom: 1.25rem; }
+p:last-child { margin-bottom: 0; }
+.pull-quote {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.55rem;
+  line-height: 1.35;
+  color: var(--green-deep);
+  border-left: 2px solid var(--green-deep);
+  padding-left: 1.5rem;
+  margin: 2.5rem 0 0;
+  max-width: 22ch;
+}
+.work-block { margin-top: 2.5rem; }
+.work-block h3 {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  margin-bottom: 1rem;
+}
+.work-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0.6rem; }
+.work-list li { font-size: 1.05rem; padding-left: 1.5rem; position: relative; }
+.work-list li::before { content: "—"; position: absolute; left: 0; color: var(--sage); }
+@media (min-width: 600px) { .work-list { grid-template-columns: 1fr 1fr; gap: 0.65rem 2rem; } }
+.area-list {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.85rem;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  font-weight: 400;
+}
+.area-divider { display: inline-block; margin: 0 0.45rem; color: var(--sage); font-weight: 400; }
+.expansion-line { margin-top: 1.75rem; font-style: italic; font-size: 1.1rem; color: var(--charcoal); }
+.gallery { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
+@media (min-width: 600px) { .gallery { grid-template-columns: 1fr 1fr; } }
+.photo {
+  aspect-ratio: 4 / 3;
+  background: var(--cream-warm);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  text-align: center;
+  padding: 1rem;
+}
+.contact {
+  background: var(--green-deep);
+  color: var(--cream);
+  text-align: center;
+  padding: 6rem 2rem;
+  border-top: 0;
+}
+.contact h2 { color: var(--cream); max-width: 20ch; margin-left: auto; margin-right: auto; }
+.contact p { max-width: 32ch; margin-left: auto; margin-right: auto; font-size: 1.15rem; font-weight: 300; }
+.btn {
+  display: inline-block;
+  margin-top: 2.25rem;
+  background: var(--cream);
+  color: var(--green-deep);
+  text-decoration: none;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 1.1rem 2.4rem;
+  border: 1.5px solid var(--cream);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.btn:hover { background: transparent; color: var(--cream); }
+footer {
+  background: var(--green-darker);
+  color: var(--cream);
+  padding: 2.75rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+footer p { margin-bottom: 0.5rem; opacity: 0.85; }
+footer .footer-tagline {
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  opacity: 0.6;
+  margin-bottom: 0;
+}
+.reveal { opacity: 0; transform: translateY(10px); animation: rise 0.9s ease-out forwards; }
+.reveal-1 { animation-delay: 0.1s; }
+.reveal-2 { animation-delay: 0.35s; }
+.reveal-3 { animation-delay: 0.6s; }
+@keyframes rise { to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 600px) {
+  .hero { padding: 4rem 1.5rem 4.5rem; }
+  .logo-main { font-size: 2.3rem; }
+  .logo-cams { font-size: 1.1rem; }
+  .hero-tagline { font-size: 1.25rem; margin-top: 2.5rem; }
+  section { padding: 4rem 0; }
+  .container { padding: 0 1.5rem; }
+  h2 { font-size: 1.9rem; }
+  .area-list { font-size: 1.4rem; }
+  .contact { padding: 4rem 1.5rem; }
+  .pull-quote { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="logo reveal reveal-1">
+    <div class="logo-cams">Cam's</div>
+    <hr class="logo-divider">
+    <div class="logo-main">Garden Care</div>
+  </div>
+  <p class="hero-tagline reveal reveal-2">Looking after lawns, properly.</p>
+  <p class="hero-sub reveal reveal-3">Mow · Edge · Scarify · Overseed · Feed</p>
+</header>
+
+<section>
+  <div class="container">
+    <div class="section-label">About</div>
+    <h2>A small, considered weekend round.</h2>
+    <p class="lead">I'm Cam. I run a solo lawn-care round across Great Preston, Garforth, Kippax and Allerton Bywater — and now a few lawns in Woodlesford. Monday to Friday I'm in a day job; Saturdays and Sundays, I'm on lawns.</p>
+    <p>Working weekends only means I'm selective about the lawns I take on, and that's deliberate. I'd rather do the whole work on a small number of lawns — the cut, the edges, the seasonal renovation — than rush a mow round as many as I can fit in a day.</p>
+    <p class="pull-quote">Same price every time. Same person turning up.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">The Work</div>
+    <h2>Cultural practices, done properly.</h2>
+    <p class="lead">Natural methods, no harsh chemicals. Two flows of work, side by side: the regular round that keeps a lawn tidy through the season, and the seasonal renovation that keeps it genuinely healthy.</p>
+    <div class="work-block">
+      <h3>Regular care</h3>
+      <ul class="work-list">
+        <li>Mowing with a sharp blade</li>
+        <li>Strimming and edging every visit</li>
+        <li>Manual weeding as needed</li>
+        <li>Feeding when the lawn calls for it</li>
+      </ul>
+    </div>
+    <div class="work-block">
+      <h3>Seasonal work</h3>
+      <ul class="work-list">
+        <li>Scarifying to lift moss and thatch</li>
+        <li>Aerating to ease compaction</li>
+        <li>Overseeding to thicken thin patches</li>
+        <li>Topdressing to even out levels</li>
+        <li>Nematodes for chafer and leatherjacket</li>
+        <li>Lime where the soil's acidic</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">Where I Work</div>
+    <h2>A small patch, properly served.</h2>
+    <p class="area-list">Garforth<span class="area-divider">·</span>Kippax<span class="area-divider">·</span>Allerton Bywater<span class="area-divider">·</span>Great Preston</p>
+    <p class="expansion-line">Now taking on a few lawns in Woodlesford.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">Recent Work</div>
+    <h2>From the round.</h2>
+    <div class="gallery">
+      <div class="photo">[ Stripe shot ]</div>
+      <div class="photo">[ Edge close-up ]</div>
+      <div class="photo">[ Customer lawn ]</div>
+      <div class="photo">[ Workshop / kit ]</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Want a chat about your lawn?</h2>
+  <p>Drop me a message on Facebook. We'll have a proper conversation about what your lawn needs.</p>
+  <a class="btn" href="#" rel="noopener">Message me on Facebook</a>
+</section>
+
+<footer>
+  <p>Cam's Garden Care · Great Preston, West Yorkshire</p>
+  <p class="footer-tagline">You Grow It · I Mow It</p>
+</footer>
+
+</body>
+</html>
