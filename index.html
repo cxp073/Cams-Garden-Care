@@ -41,23 +41,7 @@ body {
   text-align: center;
   position: relative;
 }
-.logo { display: inline-block; text-align: left; line-height: 1; }
-.logo-cams {
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1.4rem;
-  letter-spacing: 0.01em;
-  padding-left: 0.15rem;
-}
-.logo-divider { border: 0; border-top: 1.5px solid var(--cream); margin: 0.45rem 0 0.55rem; width: 100%; }
-.logo-main {
-  font-family: 'Anton', sans-serif;
-  font-weight: 400;
-  font-size: 3.2rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
+.logo-img { display: block; width: 170px; height: auto; margin: 0 auto; }
 .hero-tagline {
   font-family: 'Newsreader', serif;
   font-style: italic;
@@ -142,17 +126,9 @@ p:last-child { margin-bottom: 0; }
   aspect-ratio: 4 / 3;
   background: var(--cream-warm);
   border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Anton', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--sage);
-  text-align: center;
-  padding: 1rem;
+  overflow: hidden;
 }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .contact {
   background: var(--green-deep);
   color: var(--cream);
@@ -201,8 +177,7 @@ footer .footer-tagline {
 @keyframes rise { to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 600px) {
   .hero { padding: 4rem 1.5rem 4.5rem; }
-  .logo-main { font-size: 2.3rem; }
-  .logo-cams { font-size: 1.1rem; }
+  .logo-img { width: 130px; }
   .hero-tagline { font-size: 1.25rem; margin-top: 2.5rem; }
   section { padding: 4rem 0; }
   .container { padding: 0 1.5rem; }
@@ -216,11 +191,7 @@ footer .footer-tagline {
 <body>
 
 <header class="hero">
-  <div class="logo reveal reveal-1">
-    <div class="logo-cams">Cam's</div>
-    <hr class="logo-divider">
-    <div class="logo-main">Garden Care</div>
-  </div>
+  <img class="logo-img reveal reveal-1" src="images/logo.png" alt="Cam's Garden Care" width="170" height="170">
   <p class="hero-tagline reveal reveal-2">Looking after lawns, properly.</p>
   <p class="hero-sub reveal reveal-3">Mow · Edge · Scarify · Overseed · Feed</p>
 </header>
@@ -277,10 +248,10 @@ footer .footer-tagline {
     <div class="section-label">Recent Work</div>
     <h2>From the round.</h2>
     <div class="gallery">
-      <div class="photo">[ Stripe shot ]</div>
-      <div class="photo">[ Edge close-up ]</div>
-      <div class="photo">[ Customer lawn ]</div>
-      <div class="photo">[ Workshop / kit ]</div>
+      <div class="photo"><img src="images/pat-lawn-stripes.jpg" alt="A freshly striped lawn" loading="lazy"></div>
+      <div class="photo"><img src="images/pat-lawn-edge.jpg" alt="A cleanly edged lawn" loading="lazy"></div>
+      <div class="photo"><img src="images/sue-lawn-stripes.jpg" alt="A customer's striped lawn" loading="lazy"></div>
+      <div class="photo"><img src="images/pat-lawn-overhead.jpg" alt="A lawn seen from above" loading="lazy"></div>
     </div>
   </div>
 </section>
