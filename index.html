@@ -37,7 +37,7 @@ body {
 .hero {
   background: var(--green-deep);
   color: var(--cream);
-  padding: 6rem 2rem 6.5rem;
+  padding: 3rem 2rem 3.5rem;
   text-align: center;
   position: relative;
 }
@@ -48,7 +48,7 @@ body {
   font-weight: 300;
   font-size: 1.5rem;
   line-height: 1.4;
-  margin-top: 3.5rem;
+  margin-top: 1.25rem;
   max-width: 24ch;
   margin-left: auto;
   margin-right: auto;
@@ -61,6 +61,21 @@ body {
   text-transform: uppercase;
   opacity: 0.7;
 }
+.hero-cta {
+  display: inline-block;
+  margin-top: 2rem;
+  background: transparent;
+  color: var(--cream);
+  text-decoration: none;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.9rem;
+  border: 1.5px solid var(--cream);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.hero-cta:hover { background: var(--cream); color: var(--green-deep); }
 section { padding: 5.5rem 0; }
 section + section { border-top: 1px solid var(--line); }
 .section-label {
@@ -176,8 +191,9 @@ footer .footer-tagline {
 .reveal-3 { animation-delay: 0.6s; }
 @keyframes rise { to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 600px) {
-  .hero { padding: 2.8rem 1.5rem 3.15rem; }
-  .hero-tagline { font-size: 1.25rem; margin-top: 1.75rem; }
+  .hero { padding: 1.75rem 1.5rem 2.25rem; }
+  .hero-tagline { font-size: 1.25rem; margin-top: 1rem; }
+  .hero-cta { margin-top: 1.25rem; }
   section { padding: 4rem 0; }
   .container { padding: 0 1.5rem; }
   h2 { font-size: 1.9rem; }
@@ -193,6 +209,7 @@ footer .footer-tagline {
   <img class="logo-img reveal reveal-1" src="images/logo.png" alt="Cam's Garden Care" width="170" height="170">
   <p class="hero-tagline reveal reveal-2">Looking after lawns, properly.</p>
   <p class="hero-sub reveal reveal-3">Mow · Edge · Scarify · Overseed · Feed</p>
+  <a class="hero-cta reveal reveal-3" href="https://m.me/camsgardencare" target="_blank" rel="noopener">Message me on Facebook</a>
 </header>
 
 <section>
