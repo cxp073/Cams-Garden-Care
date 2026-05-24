@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cxp073.github.io/Cams-Garden-Care/sitemap.xml
