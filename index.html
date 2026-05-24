@@ -170,6 +170,39 @@ p:last-child { margin-bottom: 0; }
 }
 .contact h2 { color: var(--cream); max-width: 20ch; margin-left: auto; margin-right: auto; }
 .contact p { max-width: 32ch; margin-left: auto; margin-right: auto; font-size: 1.15rem; font-weight: 300; }
+.testimonial {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--cream);
+  opacity: 0.92;
+  max-width: 36ch;
+  margin: 2.5rem auto 0.85rem;
+  padding: 0;
+  border: 0;
+}
+.testimonial cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.78rem;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-top: 0.85rem;
+}
+.reviews-link {
+  display: block;
+  color: var(--cream);
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  opacity: 0.75;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.reviews-link:hover { opacity: 1; }
 .btn {
   display: inline-block;
   margin-top: 2.25rem;
@@ -299,6 +332,11 @@ footer .footer-tagline {
 <section class="contact" id="contact">
   <h2>Want a chat about your lawn?</h2>
   <p>Drop me a message on Facebook. We'll have a proper conversation about what your lawn needs.</p>
+  <blockquote class="testimonial">
+    Cam's professional approach is to be applauded. He arrived on time, worked out what was needed and cracked on. Really good job. Would definitely recommend. Thanks so much, Cam.
+    <cite>— Lindsay</cite>
+  </blockquote>
+  <a class="reviews-link" href="https://www.facebook.com/camsgardencare/reviews" target="_blank" rel="noopener">Read more reviews on Facebook →</a>
   <a class="btn" href="https://m.me/camsgardencare" target="_blank" rel="noopener">Message me on Facebook</a>
   <p class="call-line">or call me — <a href="tel:+447713924067">07713 924 067</a></p>
 </section>
