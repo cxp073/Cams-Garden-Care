@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cam's Garden Care · Weekend Lawn Care · Garforth & Kippax</title>
 <meta name="description" content="Weekend lawn care across Garforth, Kippax, Allerton Bywater, Great Preston and Woodlesford. Natural methods, no harsh chemicals — same person every time.">
-<link rel="canonical" href="https://cxp073.github.io/Cams-Garden-Care/">
+<link rel="canonical" href="https://camsgardencare.co.uk/">
 <meta name="theme-color" content="#1F3D2E">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:title" content="Cam's Garden Care · Weekend Lawn Care · Garforth & Kippax">
 <meta property="og:description" content="Weekend lawn care across Garforth, Kippax, Allerton Bywater, Great Preston and Woodlesford. Natural methods, no harsh chemicals — same person every time.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://cxp073.github.io/Cams-Garden-Care/">
-<meta property="og:image" content="https://cxp073.github.io/Cams-Garden-Care/images/og-image.jpg">
+<meta property="og:url" content="https://camsgardencare.co.uk/">
+<meta property="og:image" content="https://camsgardencare.co.uk/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">
@@ -21,19 +21,19 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Cam's Garden Care · Weekend Lawn Care · Garforth & Kippax">
 <meta name="twitter:description" content="Weekend lawn care across Garforth, Kippax, Allerton Bywater, Great Preston and Woodlesford. Natural methods, no harsh chemicals.">
-<meta name="twitter:image" content="https://cxp073.github.io/Cams-Garden-Care/images/og-image.jpg">
+<meta name="twitter:image" content="https://camsgardencare.co.uk/images/og-image.jpg">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://cxp073.github.io/Cams-Garden-Care/#business",
+  "@id": "https://camsgardencare.co.uk/#business",
   "name": "Cam's Garden Care",
   "description": "Weekend lawn care across Garforth, Kippax, Allerton Bywater, Great Preston and Woodlesford. Natural methods, no harsh chemicals.",
-  "url": "https://cxp073.github.io/Cams-Garden-Care/",
+  "url": "https://camsgardencare.co.uk/",
   "telephone": "+44-7713-924067",
   "priceRange": "££",
-  "image": "https://cxp073.github.io/Cams-Garden-Care/images/og-image.jpg",
-  "logo": "https://cxp073.github.io/Cams-Garden-Care/images/logo.png",
+  "image": "https://camsgardencare.co.uk/images/og-image.jpg",
+  "logo": "https://camsgardencare.co.uk/images/logo.png",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Great Preston",
@@ -283,6 +283,41 @@ p:last-child { margin-bottom: 0; }
   transition: background 0.25s ease, color 0.25s ease;
 }
 .btn:hover { background: transparent; color: var(--cream); }
+.contact-form { max-width: 380px; margin: 2.25rem auto 0; text-align: left; }
+.contact-form label { display: block; margin-bottom: 1rem; }
+.contact-form label > span {
+  display: block;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.8;
+  margin-bottom: 0.45rem;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: rgba(245, 239, 226, 0.06);
+  border: 1px solid rgba(245, 239, 226, 0.35);
+  color: var(--cream);
+  font-family: 'Newsreader', serif;
+  font-size: 1rem;
+  padding: 0.7rem 0.9rem;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--cream);
+  background: rgba(245, 239, 226, 0.1);
+}
+.contact-form textarea { resize: vertical; min-height: 4.5rem; line-height: 1.5; }
+.contact-form .form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.contact-form button { cursor: pointer; margin-top: 0.5rem; font: inherit; font-family: 'Anton', sans-serif; }
+.contact-form + .hero-cta { margin-top: 1.75rem; }
 footer {
   background: var(--green-darker);
   color: var(--cream);
@@ -401,13 +436,36 @@ footer .footer-tagline {
 
 <section class="contact" id="contact">
   <h2>Want a chat about your lawn?</h2>
-  <p>Drop me a message on Facebook. We'll have a proper conversation about what your lawn needs.</p>
+  <p>Tell me a bit about your lawn and I'll come back to you.</p>
   <blockquote class="testimonial">
     Cam's professional approach is to be applauded. He arrived on time, worked out what was needed and cracked on. Really good job. Would definitely recommend. Thanks so much, Cam.
     <cite>— Lindsay</cite>
   </blockquote>
   <a class="reviews-link" href="https://www.facebook.com/camsgardencare/reviews" target="_blank" rel="noopener">Read more reviews on Facebook →</a>
-  <a class="btn" href="https://m.me/camsgardencare" target="_blank" rel="noopener">Message me on Facebook</a>
+  <form class="contact-form" action="https://formsubmit.co/camtpotter@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="New enquiry — Cam's Garden Care">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label>
+      <span>Name</span>
+      <input type="text" name="name" required autocomplete="name">
+    </label>
+    <label>
+      <span>Email</span>
+      <input type="email" name="email" required autocomplete="email">
+    </label>
+    <label>
+      <span>Phone (optional)</span>
+      <input type="tel" name="phone" autocomplete="tel">
+    </label>
+    <label>
+      <span>What does your lawn need?</span>
+      <textarea name="message" rows="4" required></textarea>
+    </label>
+    <button type="submit" class="btn">Send message</button>
+  </form>
+  <a class="hero-cta" href="https://m.me/camsgardencare" target="_blank" rel="noopener">Or message me on Facebook</a>
   <p class="call-line">or call me — <a href="tel:+447713924067">07713 924 067</a></p>
 </section>
 
