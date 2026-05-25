@@ -28,6 +28,10 @@
 
 <meta name="theme-color" content="#1F3D2E">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+
 <!-- LocalBusiness schema with Garforth focus -->
 <script type="application/ld+json">
 {
@@ -126,6 +130,57 @@
   .cta a { color: var(--cream); font-weight: bold; }
   .cta .phone { font-size: 1.3rem; display: block; margin-top: 0.5rem; }
   footer.site-footer { text-align: center; padding: 1.5rem; font-size: 0.9rem; color: #555; }
+
+  /* Contact form — ported from index.html so styling matches the main page */
+  .btn {
+    display: inline-block;
+    margin-top: 2.25rem;
+    background: var(--cream);
+    color: var(--green-deep);
+    text-decoration: none;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 1.1rem 2.4rem;
+    border: 1.5px solid var(--cream);
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .btn:hover { background: transparent; color: var(--cream); }
+  .contact-form { max-width: 380px; margin: 2.25rem auto 0; text-align: left; }
+  .contact-form label { display: block; margin-bottom: 1rem; }
+  .contact-form label > span {
+    display: block;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.8;
+    margin-bottom: 0.45rem;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    background: rgba(245, 239, 226, 0.06);
+    border: 1px solid rgba(245, 239, 226, 0.35);
+    color: var(--cream);
+    font-family: 'Newsreader', serif;
+    font-size: 1rem;
+    padding: 0.7rem 0.9rem;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--cream);
+    background: rgba(245, 239, 226, 0.1);
+  }
+  .contact-form textarea { resize: vertical; min-height: 4.5rem; line-height: 1.5; }
+  .contact-form .form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .contact-form button { cursor: pointer; margin-top: 0.5rem; font: inherit; font-family: 'Anton', sans-serif; }
 </style>
 </head>
 <body>
@@ -178,6 +233,28 @@
 
   <div class="cta">
     <p>Want a chat about your lawn?</p>
+    <form class="contact-form" action="https://formspree.io/f/mwvznykp" method="POST">
+      <input type="hidden" name="_subject" value="New enquiry — Cam's Garden Care">
+      <input type="hidden" name="source_page" value="garforth">
+      <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label>
+        <span>Name</span>
+        <input type="text" name="name" required autocomplete="name">
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" required autocomplete="email">
+      </label>
+      <label>
+        <span>Phone (optional)</span>
+        <input type="tel" name="phone" autocomplete="tel">
+      </label>
+      <label>
+        <span>What does your lawn need?</span>
+        <textarea name="message" rows="4" required></textarea>
+      </label>
+      <button type="submit" class="btn">Send message</button>
+    </form>
     <a href="tel:+447713924067" class="phone">07713 924 067</a>
     <p style="margin-top: 1rem;"><a href="https://m.me/camsgardencare">Or message me on Facebook</a></p>
   </div>
