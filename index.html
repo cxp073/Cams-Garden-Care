@@ -327,6 +327,9 @@ p:last-child { margin-bottom: 0; }
 .contact-form .form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .contact-form button { cursor: pointer; margin-top: 0.5rem; font: inherit; font-family: 'Anton', sans-serif; }
 .contact-form + .hero-cta { margin-top: 1.75rem; }
+.form-success { color: var(--cream); font-family: 'Newsreader', serif; font-style: italic; font-size: 1.05rem; line-height: 1.5; text-align: center; padding: 1.5rem 0; margin: 0; }
+.form-error { color: var(--cream); opacity: 0.9; font-family: 'Newsreader', serif; font-style: italic; font-size: 0.95rem; text-align: center; margin-top: 1rem; }
+.form-error a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
 footer {
   background: var(--green-darker);
   color: var(--cream);
@@ -454,6 +457,8 @@ footer .footer-tagline {
   <a class="reviews-link" href="https://www.facebook.com/camsgardencare/reviews" target="_blank" rel="noopener">Read more reviews on Facebook →</a>
   <form class="contact-form" action="https://formspree.io/f/mwvznykp" method="POST">
     <input type="hidden" name="_subject" value="New enquiry — Cam's Garden Care">
+    <input type="hidden" name="source_page" value="home">
+    <input type="hidden" name="gclid" value="">
     <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label>
       <span>Name</span>
@@ -483,6 +488,61 @@ footer .footer-tagline {
   </address>
   <p class="footer-tagline">You Grow It · I Mow It</p>
 </footer>
+
+<script>
+(function() {
+  var GCLID_KEY = 'cgc_gclid';
+  var GCLID_TTL = 90 * 86400000;
+  function getStored() {
+    try {
+      var o = JSON.parse(localStorage.getItem(GCLID_KEY) || 'null');
+      return o && o.v && o.t && (Date.now() - o.t) < GCLID_TTL ? o.v : '';
+    } catch (e) { return ''; }
+  }
+  function getGclid() {
+    var p = new URLSearchParams(window.location.search).get('gclid');
+    if (p) {
+      try { localStorage.setItem(GCLID_KEY, JSON.stringify({ v: p, t: Date.now() })); } catch (e) {}
+      return p;
+    }
+    return getStored();
+  }
+  function init() {
+    var gclid = getGclid();
+    document.querySelectorAll('form.contact-form').forEach(function(form) {
+      var hidden = form.querySelector('input[name="gclid"]');
+      if (hidden && gclid) hidden.value = gclid;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) btn.disabled = true;
+        var existingErr = form.querySelector('.form-error');
+        if (existingErr) existingErr.remove();
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function(r) {
+          if (!r.ok) throw new Error('http ' + r.status);
+          if (typeof gtag === 'function') {
+            gtag('event', 'conversion', { 'send_to': 'AW-18188133016/AW-18188133016/KVI3COH5sLwcEJjF4-BD' });
+          }
+          form.classList.add('is-success');
+          form.innerHTML = '<p class="form-success">Thanks — I’ve got your message and I’ll be in touch, usually the same day.</p>';
+        }).catch(function() {
+          if (btn) btn.disabled = false;
+          var err = document.createElement('p');
+          err.className = 'form-error';
+          err.innerHTML = 'Something went wrong sending the message. Please email me directly at <a href="mailto:camtpotter@gmail.com">camtpotter@gmail.com</a>.';
+          form.appendChild(err);
+        });
+      });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
 
 </body>
 </html>
