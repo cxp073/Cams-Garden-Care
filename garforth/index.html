@@ -142,6 +142,7 @@
   /* Minimal styling — adapt or replace to match your main site's CSS */
   :root {
     --green-deep: #1F3D2E;
+    --green-darker: #15351f;
     --green-mid: #2E5A45;
     --cream: #F7F4EC;
     --text: #1a1a1a;
@@ -219,6 +220,8 @@
     .hero { padding: 2.25rem 1.5rem 2.75rem; }
     .hero-tagline { font-size: 1.25rem; margin-top: 1.5rem; }
     .hero-cta { margin-top: 1.25rem; }
+    .contact { padding: 4rem 1.5rem; }
+    .contact h2 { font-size: 1.9rem; }
   }
 
   img.hero { width: 100%; height: auto; border-radius: 4px; margin: 1.5rem 0; padding: 0; background: transparent; }
@@ -232,17 +235,48 @@
     color: #333;
   }
   blockquote footer { font-style: normal; font-weight: bold; margin-top: 0.5rem; color: var(--green-deep); }
-  .cta {
+  .contact {
     background: var(--green-deep);
     color: var(--cream);
-    padding: 1.5rem;
-    border-radius: 4px;
-    margin: 2.5rem 0 1rem;
     text-align: center;
+    padding: 6rem 2rem;
+    border-top: 0;
   }
-  .cta a { color: var(--cream); font-weight: bold; }
-  .cta .phone { font-size: 1.3rem; display: block; margin-top: 0.5rem; }
-  footer.site-footer { text-align: center; padding: 1.5rem; font-size: 0.9rem; color: #555; }
+  .contact h2 {
+    font-family: 'Newsreader', serif;
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin: 0 auto 2rem;
+    color: var(--cream);
+    max-width: 20ch;
+  }
+  .contact p { max-width: 32ch; margin-left: auto; margin-right: auto; font-size: 1.15rem; font-weight: 300; }
+  .contact .phone { font-size: 1.3rem; display: block; margin-top: 0.5rem; color: var(--cream); font-weight: bold; text-decoration: none; }
+  .contact .phone:hover { text-decoration: underline; }
+  .contact > p > a { color: var(--cream); font-weight: bold; text-decoration: none; }
+  .contact > p > a:hover { text-decoration: underline; }
+  footer {
+    background: var(--green-darker);
+    color: var(--cream);
+    padding: 2.75rem 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  footer p { margin-bottom: 0.5rem; opacity: 0.85; }
+  footer address { font-style: normal; }
+  footer address a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
+  footer address a:hover { opacity: 1; }
+  footer .footer-tagline {
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    opacity: 0.6;
+    margin-bottom: 0;
+  }
 
   /* FAQ */
   .faq { margin: 1rem 0 1.5rem; }
@@ -378,41 +412,44 @@
     <p class="faq-a">I cover Garforth, Kippax, Allerton Bywater and Great Preston, with a few lawns in Woodlesford. It's a small round on purpose, so I can do the whole job properly rather than rushing.</p>
   </div>
 
-  <div class="cta">
-    <p>Want a chat about your lawn?</p>
-    <form class="contact-form" action="https://formspree.io/f/mwvznykp" method="POST">
-      <input type="hidden" name="_subject" value="New enquiry — Cam's Garden Care">
-      <input type="hidden" name="source_page" value="garforth">
-      <input type="hidden" name="gclid" value="">
-      <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label>
-        <span>Name</span>
-        <input type="text" name="name" required autocomplete="name">
-      </label>
-      <label>
-        <span>Email</span>
-        <input type="email" name="email" required autocomplete="email">
-      </label>
-      <label>
-        <span>Phone (optional)</span>
-        <input type="tel" name="phone" autocomplete="tel">
-      </label>
-      <label>
-        <span>What does your lawn need?</span>
-        <textarea name="message" rows="4" required></textarea>
-      </label>
-      <button type="submit" class="btn">Send message</button>
-    </form>
-    <a href="tel:+447713924067" class="phone">07713 924 067</a>
-    <p style="margin-top: 1rem;"><a href="https://m.me/camsgardencare">Or message me on Facebook</a></p>
-  </div>
-
   <p style="text-align:center; margin-top: 2rem;"><a href="/">← Back to the main page</a></p>
 
 </main>
 
-<footer class="site-footer">
-  Cam's Garden Care · Great Preston, West Yorkshire · <a href="tel:+447713924067">07713 924 067</a>
+<section class="contact" id="contact">
+  <h2>Want a chat about your lawn?</h2>
+  <form class="contact-form" action="https://formspree.io/f/mwvznykp" method="POST">
+    <input type="hidden" name="_subject" value="New enquiry — Cam's Garden Care">
+    <input type="hidden" name="source_page" value="garforth">
+    <input type="hidden" name="gclid" value="">
+    <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label>
+      <span>Name</span>
+      <input type="text" name="name" required autocomplete="name">
+    </label>
+    <label>
+      <span>Email</span>
+      <input type="email" name="email" required autocomplete="email">
+    </label>
+    <label>
+      <span>Phone (optional)</span>
+      <input type="tel" name="phone" autocomplete="tel">
+    </label>
+    <label>
+      <span>What does your lawn need?</span>
+      <textarea name="message" rows="4" required></textarea>
+    </label>
+    <button type="submit" class="btn">Send message</button>
+  </form>
+  <a href="tel:+447713924067" class="phone">07713 924 067</a>
+  <p style="margin-top: 1rem;"><a href="https://m.me/camsgardencare">Or message me on Facebook</a></p>
+</section>
+
+<footer>
+  <address>
+    <p>Cam's Garden Care · Great Preston, West Yorkshire · <a href="tel:+447713924067">07713 924 067</a></p>
+  </address>
+  <p class="footer-tagline">You Grow It · I Mow It</p>
 </footer>
 
 <script>
