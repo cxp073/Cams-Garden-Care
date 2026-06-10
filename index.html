@@ -525,7 +525,7 @@ footer .footer-tagline {
         }).then(function(r) {
           if (!r.ok) throw new Error('http ' + r.status);
           if (typeof gtag === 'function') {
-            gtag('event', 'conversion', { 'send_to': 'AW-18188133016/AW-18188133016/KVI3COH5sLwcEJjF4-BD' });
+            gtag('event', 'conversion', { 'send_to': 'AW-18188133016/KVI3COH5sLwcEJjF4-BD', 'value': 1.0, 'currency': 'GBP' });
           }
           form.classList.add('is-success');
           form.innerHTML = '<p class="form-success">Thanks — I’ve got your message and I’ll be in touch, usually the same day.</p>';
