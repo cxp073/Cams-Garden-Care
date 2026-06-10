@@ -146,7 +146,71 @@
   h1 { font-size: 1.9rem; color: var(--green-deep); margin-bottom: 0.5rem; line-height: 1.25; }
   h2 { font-size: 1.4rem; color: var(--green-deep); margin-top: 2.5rem; }
   .tagline { color: var(--green-mid); font-style: italic; margin-top: 0; }
-  img.hero { width: 100%; height: auto; border-radius: 4px; margin: 1.5rem 0; }
+
+  /* Site header — ported verbatim from index.html so all pages share the banner */
+  .hero {
+    background: var(--green-deep);
+    color: var(--cream);
+    padding: 4.5rem 2rem 5rem;
+    text-align: center;
+    position: relative;
+  }
+  .logo-img { display: block; width: 480px; max-width: 80%; height: auto; margin: 0 auto; }
+  .hero-tagline {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-top: 2.5rem;
+    max-width: 24ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-sub {
+    margin-top: 1.75rem;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .hero-cta {
+    display: inline-block;
+    margin-top: 2rem;
+    background: transparent;
+    color: var(--cream);
+    text-decoration: none;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.9rem;
+    border: 1.5px solid var(--cream);
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .hero-cta:hover { background: var(--cream); color: var(--green-deep); }
+  .call-line {
+    margin: 1.1rem 0 0;
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 1rem;
+    opacity: 0.75;
+  }
+  .call-line a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
+  .call-line a:hover { opacity: 1; }
+  .reveal { opacity: 0; transform: translateY(10px); animation: rise 0.9s ease-out forwards; }
+  .reveal-1 { animation-delay: 0.1s; }
+  .reveal-2 { animation-delay: 0.35s; }
+  .reveal-3 { animation-delay: 0.6s; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) {
+    .hero { padding: 2.25rem 1.5rem 2.75rem; }
+    .hero-tagline { font-size: 1.25rem; margin-top: 1.5rem; }
+    .hero-cta { margin-top: 1.25rem; }
+  }
+
+  img.hero { width: 100%; height: auto; border-radius: 4px; margin: 1.5rem 0; padding: 0; background: transparent; }
   img.inline-shot { width: 100%; height: auto; border-radius: 4px; margin: 1.75rem 0; }
   .services { margin: 1rem 0; padding-left: 1.25rem; }
   .services li { margin: 0.35rem 0; }
@@ -223,6 +287,14 @@
 </style>
 </head>
 <body>
+
+<header class="hero">
+  <img class="logo-img reveal reveal-1" src="/images/logo.png" alt="Cam's Garden Care" width="630" height="147">
+  <p class="hero-tagline reveal reveal-2">Looking after lawns, properly.</p>
+  <p class="hero-sub reveal reveal-3">Mow · Edge · Scarify · Overseed · Feed</p>
+  <a class="hero-cta reveal reveal-3" href="https://m.me/camsgardencare" target="_blank" rel="noopener">Message me on Facebook</a>
+  <p class="call-line reveal reveal-3">or call me — <a href="tel:+447713924067">07713 924 067</a></p>
+</header>
 
 <main class="container">
 
