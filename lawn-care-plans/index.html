@@ -128,196 +128,35 @@
 }
 </script>
 
+<link rel="stylesheet" href="/styles.css">
 <style>
-  :root {
-    --green-deep: #1F3D2E;
-    --green-darker: #15351f;
-    --green-mid: #2E5A45;
-    --cream: #F7F4EC;
-    --text: #1a1a1a;
-  }
-  body {
-    font-family: Georgia, 'Times New Roman', serif;
-    line-height: 1.6;
-    color: var(--text);
-    margin: 0;
-    background: var(--cream);
-  }
-  .container { max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem; }
-  h1 { font-size: 1.9rem; color: var(--green-deep); margin-bottom: 0.5rem; line-height: 1.25; }
-  h2 { font-size: 1.4rem; color: var(--green-deep); margin-top: 2.5rem; }
-  .tagline { color: var(--green-mid); font-style: italic; margin-top: 0; }
-
-  /* Site header — ported verbatim from index.html so all pages share the banner */
-  .hero {
-    background: var(--green-deep);
-    color: var(--cream);
-    padding: 4.5rem 2rem 5rem;
-    text-align: center;
-    position: relative;
-  }
-  .logo-img { display: block; width: 480px; max-width: 80%; height: auto; margin: 0 auto; }
-  .hero-tagline {
-    font-family: 'Newsreader', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 1.5rem;
-    line-height: 1.4;
-    margin-top: 2.5rem;
-    max-width: 24ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero-sub {
-    margin-top: 1.75rem;
-    font-family: 'Anton', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    opacity: 0.7;
-  }
-  .hero-cta {
-    display: inline-block;
-    margin-top: 2rem;
-    background: transparent;
-    color: var(--cream);
-    text-decoration: none;
-    font-family: 'Anton', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    padding: 0.85rem 1.9rem;
-    border: 1.5px solid var(--cream);
-    transition: background 0.25s ease, color 0.25s ease;
-  }
-  .hero-cta:hover { background: var(--cream); color: var(--green-deep); }
-  .call-line {
-    margin: 1.1rem 0 0;
-    font-family: 'Newsreader', serif;
-    font-style: italic;
-    font-size: 1rem;
-    opacity: 0.75;
-  }
-  .call-line a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
-  .call-line a:hover { opacity: 1; }
-  .reveal { opacity: 0; transform: translateY(10px); animation: rise 0.9s ease-out forwards; }
-  .reveal-1 { animation-delay: 0.1s; }
-  .reveal-2 { animation-delay: 0.35s; }
-  .reveal-3 { animation-delay: 0.6s; }
-  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
-  @media (max-width: 600px) {
-    .hero { padding: 2.25rem 1.5rem 2.75rem; }
-    .hero-tagline { font-size: 1.25rem; margin-top: 1.5rem; }
-    .hero-cta { margin-top: 1.25rem; }
-    .contact { padding: 4rem 1.5rem; }
-    .contact h2 { font-size: 1.9rem; }
-  }
-
-  img.hero { width: 100%; height: auto; border-radius: 4px; margin: 1.5rem 0; padding: 0; background: transparent; }
-  img.inline-shot { width: 100%; height: auto; border-radius: 4px; margin: 1.75rem 0; }
-  .services { margin: 1rem 0; padding-left: 1.25rem; }
-  .services li { margin: 0.35rem 0; }
-  .contact {
-    background: var(--green-deep);
-    color: var(--cream);
-    text-align: center;
-    padding: 6rem 2rem;
-    border-top: 0;
-  }
-  .contact h2 {
+  /* Page-specific additions — elements the shared stylesheet doesn't cover */
+  :root { --green-mid: #2E5A45; }
+  h1 {
     font-family: 'Newsreader', serif;
     font-weight: 400;
     font-size: 2.4rem;
     line-height: 1.15;
     letter-spacing: -0.015em;
-    margin: 0 auto 2rem;
-    color: var(--cream);
-    max-width: 20ch;
+    margin-bottom: 1rem;
+    max-width: 18ch;
   }
-  .contact p { max-width: 32ch; margin-left: auto; margin-right: auto; font-size: 1.15rem; font-weight: 300; }
+  .tagline { color: var(--green-mid); font-style: italic; margin: 0 0 1.5rem; }
+  img.hero { width: 100%; height: auto; border-radius: 4px; margin: 1.5rem 0; padding: 0; background: transparent; display: block; }
+  img.inline-shot { width: 100%; height: auto; border-radius: 4px; margin: 1.75rem 0; display: block; }
+  .services { margin: 1rem 0; padding-left: 1.25rem; }
+  .services li { margin: 0.35rem 0; }
   .contact .phone { font-size: 1.3rem; display: block; margin-top: 0.5rem; color: var(--cream); font-weight: bold; text-decoration: none; }
   .contact .phone:hover { text-decoration: underline; }
   .contact > p > a { color: var(--cream); font-weight: bold; text-decoration: none; }
   .contact > p > a:hover { text-decoration: underline; }
-  body > footer {
-    background: var(--green-darker);
-    color: var(--cream);
-    padding: 2.75rem 2rem;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-  body > footer p { margin-bottom: 0.5rem; opacity: 0.85; }
-  body > footer address { font-style: normal; }
-  body > footer address a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
-  body > footer address a:hover { opacity: 1; }
-  body > footer .footer-tagline {
-    font-family: 'Anton', sans-serif;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    margin-top: 1rem;
-    opacity: 0.6;
-    margin-bottom: 0;
-  }
-
   /* FAQ */
-  .faq { margin: 1rem 0 1.5rem; }
+  .faq { margin: 1rem 0 0; }
   .faq-q { font-size: 1.1rem; color: var(--green-deep); margin: 1.5rem 0 0.4rem; line-height: 1.3; }
   .faq-a { margin: 0 0 1rem; }
-
-  /* Contact form */
-  .btn {
-    display: inline-block;
-    margin-top: 2.25rem;
-    background: var(--cream);
-    color: var(--green-deep);
-    text-decoration: none;
-    font-family: 'Anton', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    padding: 1.1rem 2.4rem;
-    border: 1.5px solid var(--cream);
-    transition: background 0.25s ease, color 0.25s ease;
+  @media (max-width: 600px) {
+    h1 { font-size: 1.9rem; }
   }
-  .btn:hover { background: transparent; color: var(--cream); }
-  .contact-form { max-width: 380px; margin: 2.25rem auto 0; text-align: left; }
-  .contact-form label { display: block; margin-bottom: 1rem; }
-  .contact-form label > span {
-    display: block;
-    font-family: 'Anton', sans-serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--cream);
-    opacity: 0.8;
-    margin-bottom: 0.45rem;
-  }
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    background: rgba(245, 239, 226, 0.06);
-    border: 1px solid rgba(245, 239, 226, 0.35);
-    color: var(--cream);
-    font-family: 'Newsreader', serif;
-    font-size: 1rem;
-    padding: 0.7rem 0.9rem;
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 0;
-  }
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    outline: none;
-    border-color: var(--cream);
-    background: rgba(245, 239, 226, 0.1);
-  }
-  .contact-form textarea { resize: vertical; min-height: 4.5rem; line-height: 1.5; }
-  .contact-form .form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-  .contact-form button { cursor: pointer; margin-top: 0.5rem; font: inherit; font-family: 'Anton', sans-serif; }
-  .form-success { color: var(--cream); font-family: 'Newsreader', serif; font-style: italic; font-size: 1.05rem; line-height: 1.5; text-align: center; padding: 1.5rem 0; margin: 0; }
-  .form-error { color: var(--cream); opacity: 0.9; font-family: 'Newsreader', serif; font-style: italic; font-size: 0.95rem; text-align: center; margin-top: 1rem; }
-  .form-error a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
 </style>
 </head>
 <body>
@@ -330,76 +169,106 @@
   <p class="call-line reveal reveal-3">or call me — <a href="tel:+447713924067">07713 924 067</a></p>
 </header>
 
-<main class="container">
+<section>
+  <div class="container">
+    <div class="section-label">About</div>
+    <h1>Seasonal Lawn Care Plans</h1>
+    <p class="tagline">A rolling plan, one person, every visit.</p>
 
-  <h1>Seasonal Lawn Care Plans</h1>
-  <p class="tagline">A rolling plan, one person, every visit.</p>
+    <img class="hero" src="/images/lawn-care-plans-aerial.jpg" alt="A lawn on my regular round from above, early summer" width="1600" height="900" fetchpriority="high">
 
-  <img class="hero" src="/images/lawn-care-plans-aerial.jpg" alt="A lawn on my regular round from above, early summer" width="1600" height="900" fetchpriority="high">
+    <p class="lead">A seasonal lawn care plan is a rolling arrangement — one person, me, every visit, with the same pair of hands getting to know the lawn through the seasons.</p>
 
-  <p>For lawns that want looking after through the whole year, not just cut on the day. A seasonal lawn care plan is a rolling arrangement — one person, me, every visit, with the same pair of hands getting to know the lawn through the seasons.</p>
+    <p>The point of a plan isn't a discount or a contract. It's that a lawn looked after as one programme — cutting, edging, feeding, seasonal renovation — ends up healthier underneath than a lawn that gets the same jobs from different hands at different times of year.</p>
 
-  <p>The point of a plan isn't a discount or a contract. It's that a lawn looked after as one programme — cutting, edging, feeding, seasonal renovation — ends up healthier underneath than a lawn that gets the same jobs from different hands at different times of year.</p>
-
-  <h2>How a plan works</h2>
-
-  <p>A plan is a rolling monthly arrangement. Weekly visits through the main growing months — roughly May to August — taper to fortnightly in the shoulder seasons of April, September and October. Over winter the visits are lighter and less frequent; there's not much to do above ground, but the soil work can still happen at the right window.</p>
-
-  <p>Cutting, edging, feeding and seasonal care are all handled together rather than as separate jobs. The cut height shifts through the year, the feed comes in at the right points for each season, and the renovation work — scarifying, aeration, overseeding, topdressing — sits in at the natural windows for it.</p>
-
-  <p>I don't put prices on this page. Every lawn is different — size, shape, condition, what's already been done to it — and plans are priced to the lawn after a visit.</p>
-
-  <img class="inline-shot" src="/images/lawn-borders-summer.jpg" alt="A summer lawn with full borders, mowed clean to the edge" width="1360" height="1020" loading="lazy">
-
-  <h2>What's included across the year</h2>
-
-  <ul class="services">
-    <li>Mowing with a sharp blade, at the right height for the season</li>
-    <li>Strimming and edging every visit</li>
-    <li>Feeding scheduled across the growing year, natural methods</li>
-    <li>Scarifying to lift moss and thatch</li>
-    <li>Aerating to ease compaction</li>
-    <li>Overseeding to thicken thin patches</li>
-    <li>Topdressing to even out levels</li>
-  </ul>
-
-  <p>No harsh chemicals — the work runs on natural methods through the whole programme. Larger renovation jobs — full lawn lift-and-relay, returfing — get quoted separately as projects rather than rolled into the monthly rate.</p>
-
-  <img class="inline-shot" src="/images/lawn-thatch-check.jpg" alt="A close look at the base of a lawn — moss and thatch building up at soil level, the kind of thing the seasonal work is for" width="1200" height="1600" loading="lazy">
-
-  <h2>Why one person matters</h2>
-
-  <p>The cut height, the feeding programme and the seasonal work all interact. A lawn cut too short in dry weather struggles even with feed; a lawn that's been scarified hard needs the right cuts afterwards to recover; an autumn overseed wants a specific mowing pattern through the following spring.</p>
-
-  <p>When one person handles all of it across the year, the lawn gets managed as one system rather than a sequence of disconnected jobs. I know what was done last visit, what the lawn was doing last month, and what it'll want next. Same person every visit means decisions don't have to be re-explained.</p>
-
-  <img class="inline-shot" src="/images/lawn-edge-detail.jpg" alt="A clean lawn edge at the start of the cutting season, cherry blossom on the ground" width="896" height="1195" loading="lazy">
-
-  <h2>Areas I cover for plans</h2>
-
-  <p>For seasonal lawn care plans I travel further than my regular cutting round. The plan area covers Oulton, Methley, Ledsham, Ledston, Aberford, Barwick-in-Elmet and Thorner — the villages east of Leeds — alongside my home patch of Garforth, Kippax, Allerton Bywater, Great Preston and Woodlesford.</p>
-
-  <p>If you're a few minutes outside that and it's a lawn worth the trip, get in touch — the plan area expands as my time on the road on a given weekend allows.</p>
-
-  <h2>Common questions</h2>
-
-  <div class="faq">
-    <h3 class="faq-q">How often will you visit?</h3>
-    <p class="faq-a">Weekly through the main growing months, fortnightly in the shoulder seasons, and a light touch over winter. The exact pattern depends on the lawn — what it's doing, what it needs — and gets set after the first visit.</p>
-
-    <h3 class="faq-q">Do you use weedkillers or harsh chemicals?</h3>
-    <p class="faq-a">No. The plan runs on natural methods and no harsh chemicals — weeds get dealt with by hand, and the feeding programme is built to grow strong grass that crowds them out over time.</p>
-
-    <h3 class="faq-q">Is it always you who comes?</h3>
-    <p class="faq-a">Yes — always. The whole point of a plan is one person managing the lawn as a system across the year. Same hands, same eyes, every visit.</p>
-
-    <h3 class="faq-q">Which areas do you cover for plans?</h3>
-    <p class="faq-a">I cover the villages east of Leeds — Oulton, Methley, Ledsham, Ledston, Aberford, Barwick-in-Elmet and Thorner — alongside my home patch of Garforth, Kippax, Allerton Bywater, Great Preston and Woodlesford.</p>
+    <p class="pull-quote">For lawns that want looking after through the whole year, not just cut on the day.</p>
   </div>
+</section>
 
-  <p style="text-align:center; margin-top: 2rem;"><a href="/">← Back to the main page</a></p>
+<section>
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <h2>How a plan works</h2>
 
-</main>
+    <p>A plan is a rolling monthly arrangement. Weekly visits through the main growing months — roughly May to August — taper to fortnightly in the shoulder seasons of April, September and October. Over winter the visits are lighter and less frequent; there's not much to do above ground, but the soil work can still happen at the right window.</p>
+
+    <p>Cutting, edging, feeding and seasonal care are all handled together rather than as separate jobs. The cut height shifts through the year, the feed comes in at the right points for each season, and the renovation work — scarifying, aeration, overseeding, topdressing — sits in at the natural windows for it.</p>
+
+    <p>I don't put prices on this page. Every lawn is different — size, shape, condition, what's already been done to it — and plans are priced to the lawn after a visit.</p>
+
+    <img class="inline-shot" src="/images/lawn-borders-summer.jpg" alt="A summer lawn with full borders, mowed clean to the edge" width="1360" height="1020" loading="lazy">
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">What's Included</div>
+    <h2>What's included across the year</h2>
+
+    <ul class="services">
+      <li>Mowing with a sharp blade, at the right height for the season</li>
+      <li>Strimming and edging every visit</li>
+      <li>Feeding scheduled across the growing year, natural methods</li>
+      <li>Scarifying to lift moss and thatch</li>
+      <li>Aerating to ease compaction</li>
+      <li>Overseeding to thicken thin patches</li>
+      <li>Topdressing to even out levels</li>
+    </ul>
+
+    <p>No harsh chemicals — the work runs on natural methods through the whole programme. Larger renovation jobs — full lawn lift-and-relay, returfing — get quoted separately as projects rather than rolled into the monthly rate.</p>
+
+    <img class="inline-shot" src="/images/lawn-thatch-check.jpg" alt="A close look at the base of a lawn — moss and thatch building up at soil level, the kind of thing the seasonal work is for" width="1200" height="1600" loading="lazy">
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">One Person</div>
+    <h2>Why one person matters</h2>
+
+    <p>The cut height, the feeding programme and the seasonal work all interact. A lawn cut too short in dry weather struggles even with feed; a lawn that's been scarified hard needs the right cuts afterwards to recover; an autumn overseed wants a specific mowing pattern through the following spring.</p>
+
+    <p>When one person handles all of it across the year, the lawn gets managed as one system rather than a sequence of disconnected jobs. I know what was done last visit, what the lawn was doing last month, and what it'll want next.</p>
+
+    <p class="pull-quote">Same person every visit means decisions don't have to be re-explained.</p>
+
+    <img class="inline-shot" src="/images/lawn-edge-detail.jpg" alt="A clean lawn edge at the start of the cutting season, cherry blossom on the ground" width="896" height="1195" loading="lazy">
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">Where I Work</div>
+    <h2>Areas I cover for plans</h2>
+
+    <p>For seasonal lawn care plans I travel further than my regular cutting round. The plan area covers Oulton, Methley, Ledsham, Ledston, Aberford, Barwick-in-Elmet and Thorner — the villages east of Leeds — alongside my home patch of Garforth, Kippax, Allerton Bywater, Great Preston and Woodlesford.</p>
+
+    <p>If you're a few minutes outside that and it's a lawn worth the trip, get in touch — the plan area expands as my time on the road on a given weekend allows.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">Questions</div>
+    <h2>Common questions</h2>
+
+    <div class="faq">
+      <h3 class="faq-q">How often will you visit?</h3>
+      <p class="faq-a">Weekly through the main growing months, fortnightly in the shoulder seasons, and a light touch over winter. The exact pattern depends on the lawn — what it's doing, what it needs — and gets set after the first visit.</p>
+
+      <h3 class="faq-q">Do you use weedkillers or harsh chemicals?</h3>
+      <p class="faq-a">No. The plan runs on natural methods and no harsh chemicals — weeds get dealt with by hand, and the feeding programme is built to grow strong grass that crowds them out over time.</p>
+
+      <h3 class="faq-q">Is it always you who comes?</h3>
+      <p class="faq-a">Yes — always. The whole point of a plan is one person managing the lawn as a system across the year. Same hands, same eyes, every visit.</p>
+
+      <h3 class="faq-q">Which areas do you cover for plans?</h3>
+      <p class="faq-a">I cover the villages east of Leeds — Oulton, Methley, Ledsham, Ledston, Aberford, Barwick-in-Elmet and Thorner — alongside my home patch of Garforth, Kippax, Allerton Bywater, Great Preston and Woodlesford.</p>
+    </div>
+
+    <p style="text-align:center; margin-top: 2rem;"><a href="/">← Back to the main page</a></p>
+  </div>
+</section>
 
 <section class="contact" id="contact">
   <h2>Want a chat about a plan for your lawn?</h2>
