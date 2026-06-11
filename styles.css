@@ -280,4 +280,9 @@ body > footer .footer-tagline {
   .area-list { font-size: 1.4rem; }
   .contact { padding: 4rem 1.5rem; }
   .pull-quote { font-size: 1.3rem; }
+  /* Larger, more readable body text on phones */
+  body { font-size: 18px; line-height: 1.6; }
+  .work-block h3 { font-size: 1.25rem; }
+  .work-list li { font-size: 1.15rem; }
+  .contact p { font-size: 1.2rem; }
 }
