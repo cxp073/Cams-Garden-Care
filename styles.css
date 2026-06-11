@@ -28,6 +28,7 @@ body {
   text-align: center;
   position: relative;
 }
+.logo-link { display: block; }
 .logo-img { display: block; width: 480px; max-width: 80%; height: auto; margin: 0 auto; }
 .hero-tagline {
   font-family: 'Newsreader', serif;
