@@ -74,6 +74,18 @@ body {
 }
 .call-line a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
 .call-line a:hover { opacity: 1; }
+.hero-nav {
+  margin-top: 1.5rem;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.hero-nav a { color: var(--cream); text-decoration: none; }
+.hero-nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 0.2em; }
+.hero-nav-current { color: var(--cream); }
+.hero-nav-divider { margin: 0 0.55rem; opacity: 0.6; }
 section { padding: 5.5rem 0; }
 section + section { border-top: 1px solid var(--line); }
 .section-label {
@@ -96,6 +108,15 @@ h2 {
 .lead { font-size: 1.2rem; line-height: 1.6; font-weight: 300; margin-bottom: 1.5rem; }
 p { margin-bottom: 1.25rem; }
 p:last-child { margin-bottom: 0; }
+/* In-copy links — dark green, underlined, identical colour in every state (no blue/purple) */
+.container a:link,
+.container a:visited,
+.container a:hover,
+.container a:active {
+  color: var(--green-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
 .pull-quote {
   font-family: 'Newsreader', serif;
   font-style: italic;
@@ -258,6 +279,10 @@ body > footer p { margin-bottom: 0.5rem; opacity: 0.85; }
 body > footer address { font-style: normal; }
 body > footer address a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
 body > footer address a:hover { opacity: 1; }
+body > footer .footer-nav { margin-bottom: 0.85rem; opacity: 0.85; }
+body > footer .footer-nav a { color: inherit; text-decoration: none; }
+body > footer .footer-nav a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+body > footer .footer-nav span { margin: 0 0.4rem; opacity: 0.6; }
 body > footer .footer-tagline {
   font-family: 'Anton', sans-serif;
   letter-spacing: 0.2em;
