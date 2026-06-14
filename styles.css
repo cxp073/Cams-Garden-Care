@@ -29,7 +29,8 @@ body {
   text-align: center;
   position: relative;
 }
-.logo-img { display: block; width: 480px; max-width: 80%; height: auto; margin: 0 auto; }
+.logo-link { display: block; width: 480px; max-width: 80%; margin: 0 auto; cursor: pointer; }
+.logo-img { display: block; width: 100%; height: auto; margin: 0; }
 .hero-tagline {
   font-family: 'Newsreader', serif;
   font-style: italic;
