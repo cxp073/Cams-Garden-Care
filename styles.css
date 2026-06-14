@@ -10,6 +10,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 html { scroll-behavior: smooth; }
+img, video, iframe, svg { max-width: 100%; }
 body {
   background: var(--cream);
   color: var(--charcoal);
@@ -138,7 +139,7 @@ p:last-child { margin-bottom: 0; }
   font-weight: 400;
 }
 .area-list a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
-.area-divider { display: inline-block; margin: 0 0.45rem; color: var(--sage); font-weight: 400; }
+.area-divider { display: inline-block; margin: 0 0.2rem; color: var(--sage); font-weight: 400; }
 .expansion-line { margin-top: 1.75rem; font-style: italic; font-size: 1.1rem; color: var(--charcoal); }
 .gallery { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
 @media (min-width: 600px) { .gallery { grid-template-columns: 1fr 1fr; } }
