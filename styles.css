@@ -277,7 +277,12 @@ body > footer .footer-tagline {
   .hero-cta { margin-top: 1.25rem; }
   section { padding: 4rem 0; }
   .container { padding: 0 1.5rem; }
-  h2 { font-size: 1.9rem; }
+  body { font-size: 18px; line-height: 1.6; }
+  p { font-size: 18px; line-height: 1.6; }
+  .work-list li { font-size: 18px; }
+  h1 { font-size: 30px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 20px; }
   .area-list { font-size: 1.4rem; }
   .contact { padding: 4rem 1.5rem; }
   .pull-quote { font-size: 1.3rem; }
