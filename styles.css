@@ -74,6 +74,8 @@ body {
 }
 .call-line a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
 .call-line a:hover { opacity: 1; }
+.call-line-cluster { line-height: 1.5; }
+.call-line-cluster span { white-space: nowrap; }
 .hero-nav {
   margin-top: 1.25rem;
   font-family: 'Anton', sans-serif;
