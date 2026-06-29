@@ -313,6 +313,44 @@ body > footer .footer-tagline {
   opacity: 0.6;
   margin-bottom: 0;
 }
+/* Tap-to-contact buttons (WhatsApp + Call) — shared component, see /contact-buttons.js.
+   Both placements sit on the deep-green hero/contact background, so these mirror the
+   site's on-green button styling (cream fill, deep-green text) rather than WhatsApp green. */
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  max-width: 420px;
+  margin: 2rem auto 0;
+}
+.contact-buttons .cb-btn {
+  flex: 1 1 0;
+  min-width: 150px;
+  min-height: 52px; /* generous tap target, well above the 44px minimum */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.95rem 1.5rem;
+  background: var(--cream);
+  color: var(--green-deep);
+  text-decoration: none;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--cream);
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.contact-buttons .cb-btn:hover { background: transparent; color: var(--cream); }
+.contact-buttons .cb-btn:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+.contact-buttons .cb-icon { width: 1.25em; height: 1.25em; flex: 0 0 auto; fill: currentColor; }
+@media (max-width: 600px) {
+  .contact-buttons { flex-direction: column; max-width: 340px; }
+  .contact-buttons .cb-btn { width: 100%; }
+}
 .reveal { opacity: 0; transform: translateY(10px); animation: rise 0.9s ease-out forwards; }
 .reveal-1 { animation-delay: 0.1s; }
 .reveal-2 { animation-delay: 0.35s; }
