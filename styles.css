@@ -107,6 +107,14 @@ body {
 .hero-nav a:hover { opacity: 1; }
 .hero-nav-current { color: var(--cream); text-decoration: none; }
 .hero-nav-divider { margin: 0 0.5rem; opacity: 0.6; text-decoration: none; }
+.hero-rating {
+  margin-top: 1.5rem;
+  font-family: 'Newsreader', serif;
+  font-size: 1rem;
+}
+.hero-rating a { color: var(--cream); text-decoration: none; opacity: 0.85; transition: opacity 0.25s ease; }
+.hero-rating a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 0.2em; }
+.hero-rating .stars { letter-spacing: 0.08em; margin-right: 0.4rem; }
 section { padding: 5.5rem 0; }
 section + section { border-top: 1px solid var(--line); }
 .section-label {
