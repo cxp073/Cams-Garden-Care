@@ -115,6 +115,10 @@ body {
 .hero-rating a { color: var(--cream); text-decoration: none; opacity: 0.85; transition: opacity 0.25s ease; }
 .hero-rating a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 0.2em; }
 .hero-rating .stars { color: #E3B341; letter-spacing: 0.08em; margin-right: 0.4rem; }
+/* The rating line is duplicated into the .contact section, whose own p/a rules
+   would otherwise enlarge and re-weight it — pin it back to the hero instance's look. */
+.contact .hero-rating { max-width: none; font-size: 1rem; font-weight: 400; }
+.contact .hero-rating a { font-weight: 400; }
 /* Slim site header — primary nav lifted out of the hero, aligned top-left.
    Shares the footer's deep-green bar; reuses the nav font/size/spacing. */
 .site-nav {
