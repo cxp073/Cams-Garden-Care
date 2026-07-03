@@ -91,9 +91,110 @@
     }
   }
 
+  /* ---- Condensed sticky header (Guardian-style) -------------------------
+   * Injected here so every page gets the same bar with zero per-page markup.
+   * Hidden on arrival; fades in once the hero / top header scrolls out of
+   * view (IntersectionObserver on .hero, falling back to .site-nav, then to
+   * a ~200px scroll threshold). Left: green wordmark linking home. Right: a
+   * keyboard- and screen-reader-accessible "Services" dropdown. Hrefs reuse
+   * the pages' existing URLs. */
+  var STICKY_LINKS = [
+    ["/lawn-care-plans/", "Lawn care plans"],
+    ["/lawn-feeding-seaweed/", "Lawn feeding"],
+    ["/lawn-renovation/", "Lawn renovation"],
+    ["/hedges-garden-work/", "Hedges &amp; garden work"],
+    ["/#areas", "Areas"],
+    ["#contact", "Contact"]
+  ];
+
+  function stickyMarkup() {
+    var items = "";
+    for (var i = 0; i < STICKY_LINKS.length; i++) {
+      items +=
+        '<li role="none"><a role="menuitem" href="' + STICKY_LINKS[i][0] + '">' +
+        STICKY_LINKS[i][1] + "</a></li>";
+    }
+    return (
+      '<div class="sticky-bar-inner">' +
+        '<a class="sticky-logo" href="/" aria-label="Cam\'s Garden Care home">' +
+          '<img src="/images/cams-logo-green.png" alt="Cam\'s Garden Care" width="144" height="36">' +
+        "</a>" +
+        '<div class="sticky-services">' +
+          '<button class="sticky-services-btn" type="button" aria-haspopup="true" ' +
+            'aria-expanded="false" aria-controls="sticky-services-menu">' +
+            'Services <span class="sticky-chevron" aria-hidden="true">▾</span>' +
+          "</button>" +
+          '<ul class="sticky-services-menu" id="sticky-services-menu" role="menu" ' +
+            'aria-label="Services" hidden>' + items + "</ul>" +
+        "</div>" +
+      "</div>"
+    );
+  }
+
+  function initStickyHeader() {
+    if (document.querySelector(".sticky-bar")) return;
+
+    var bar = document.createElement("div");
+    bar.className = "sticky-bar";
+    bar.innerHTML = stickyMarkup();
+    document.body.insertBefore(bar, document.body.firstChild);
+
+    var btn = bar.querySelector(".sticky-services-btn");
+    var menu = bar.querySelector(".sticky-services-menu");
+
+    function openMenu() {
+      menu.hidden = false;
+      btn.setAttribute("aria-expanded", "true");
+      bar.classList.add("menu-open");
+    }
+    function closeMenu() {
+      menu.hidden = true;
+      btn.setAttribute("aria-expanded", "false");
+      bar.classList.remove("menu-open");
+    }
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (menu.hidden) openMenu(); else closeMenu();
+    });
+    menu.addEventListener("click", function (e) {
+      if (e.target.closest("a")) closeMenu();
+    });
+    document.addEventListener("click", function (e) {
+      if (!bar.contains(e.target)) closeMenu();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !menu.hidden) { closeMenu(); btn.focus(); }
+    });
+
+    function reveal(on) {
+      if (on) {
+        bar.classList.add("is-visible");
+      } else {
+        bar.classList.remove("is-visible");
+        closeMenu();
+      }
+    }
+
+    var target = document.querySelector(".hero") || document.querySelector(".site-nav");
+    if (target && "IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        reveal(!entries[0].isIntersecting);
+      }, { threshold: 0 });
+      io.observe(target);
+    } else {
+      var onScroll = function () {
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        reveal(y > 200);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    }
+  }
+
   function boot() {
     init();
     initNav();
+    initStickyHeader();
   }
 
   if (document.readyState === "loading") {
