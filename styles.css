@@ -114,7 +114,48 @@ body {
 }
 .hero-rating a { color: var(--cream); text-decoration: none; opacity: 0.85; transition: opacity 0.25s ease; }
 .hero-rating a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 0.2em; }
-.hero-rating .stars { letter-spacing: 0.08em; margin-right: 0.4rem; }
+.hero-rating .stars { color: #E3B341; letter-spacing: 0.08em; margin-right: 0.4rem; }
+/* Slim site header — primary nav lifted out of the hero, aligned top-left.
+   Shares the footer's deep-green bar; reuses the nav font/size/spacing. */
+.site-nav {
+  background: var(--green-darker);
+  padding: 0.65rem 2rem;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.site-nav-links a { color: var(--cream); text-decoration: underline; text-underline-offset: 0.25em; opacity: 0.72; }
+.site-nav-links a:hover { opacity: 1; }
+.site-nav-current { color: var(--cream); opacity: 1; }
+.site-nav-divider { margin: 0 0.5rem; opacity: 0.45; }
+.site-nav-toggle { display: none; }
+@media (max-width: 600px) {
+  .site-nav { padding: 0.55rem 1.5rem; }
+  .site-nav.is-js .site-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: transparent;
+    border: 0;
+    color: var(--cream);
+    font: inherit;
+    opacity: 0.9;
+    cursor: pointer;
+    padding: 0.35rem 0;
+  }
+  .site-nav-burger { font-size: 1.1rem; line-height: 1; }
+  .site-nav.is-js .site-nav-links { display: none; padding-top: 0.5rem; }
+  .site-nav.is-js.is-open .site-nav-links { display: block; }
+  .site-nav.is-js .site-nav-links a,
+  .site-nav.is-js .site-nav-links .site-nav-current { display: block; padding: 0.55rem 0; opacity: 0.9; }
+  .site-nav.is-js .site-nav-current { opacity: 1; }
+  .site-nav .site-nav-divider { display: none; }
+  /* No-JS fallback: stack the links so nothing wraps awkwardly */
+  .site-nav:not(.is-js) .site-nav-links a,
+  .site-nav:not(.is-js) .site-nav-links .site-nav-current { display: block; padding: 0.4rem 0; }
+}
 section { padding: 5.5rem 0; }
 section + section { border-top: 1px solid var(--line); }
 .section-label {

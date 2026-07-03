@@ -72,9 +72,33 @@
     }
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
+  /* Site header nav: on narrow phones the four links collapse behind a
+   * "Menu" toggle. Marking the nav .is-js hands control to this script; the
+   * no-JS fallback (see styles.css) simply stacks the links so they never
+   * wrap awkwardly. */
+  function initNav() {
+    var navs = document.querySelectorAll(".site-nav");
+    for (var i = 0; i < navs.length; i++) {
+      (function (nav) {
+        nav.classList.add("is-js");
+        var btn = nav.querySelector(".site-nav-toggle");
+        if (!btn) return;
+        btn.addEventListener("click", function () {
+          var open = nav.classList.toggle("is-open");
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+      })(navs[i]);
+    }
+  }
+
+  function boot() {
     init();
+    initNav();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
   }
 })();
