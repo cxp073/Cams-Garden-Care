@@ -93,9 +93,9 @@
 
   /* ---- Condensed sticky header (Guardian-style) -------------------------
    * Injected here so every page gets the same bar with zero per-page markup.
-   * Hidden on arrival; fades in once the hero / top header scrolls out of
-   * view (IntersectionObserver on .hero, falling back to .site-nav, then to
-   * a ~200px scroll threshold). Left: green wordmark linking home. Right: a
+   * Hidden on arrival; fades in once the top nav panel scrolls out of view
+   * (IntersectionObserver on .site-nav, falling back to .hero, then to a
+   * ~200px scroll threshold). Left: green wordmark linking home. Right: a
    * keyboard- and screen-reader-accessible "Services" dropdown. Hrefs reuse
    * the pages' existing URLs. */
   var STICKY_LINKS = [
@@ -175,7 +175,7 @@
       }
     }
 
-    var target = document.querySelector(".hero") || document.querySelector(".site-nav");
+    var target = document.querySelector(".site-nav") || document.querySelector(".hero");
     if (target && "IntersectionObserver" in window) {
       var io = new IntersectionObserver(function (entries) {
         reveal(!entries[0].isIntersecting);
