@@ -130,10 +130,10 @@ body {
   text-transform: uppercase;
   line-height: 1;
 }
-.site-nav-links a { color: var(--cream); text-decoration: underline; text-underline-offset: 0.25em; opacity: 0.72; }
+.site-nav-links a { color: var(--cream); text-decoration: none; opacity: 0.72; }
 .site-nav-links a:hover { opacity: 1; }
 .site-nav-current { color: var(--cream); opacity: 1; }
-.site-nav-divider { margin: 0 0.5rem; opacity: 0.45; }
+.site-nav-divider { margin: 0 0.375rem; opacity: 0.45; }
 .site-nav-toggle { display: none; }
 @media (max-width: 600px) {
   .site-nav { padding: 0.55rem 1.5rem; }
