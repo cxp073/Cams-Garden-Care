@@ -119,6 +119,15 @@
     max-width: 18ch;
   }
   .tagline { color: var(--green-mid); font-style: italic; margin: 0 0 1.5rem; }
+  h3 {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green-deep);
+    margin: 2rem 0 1rem;
+  }
   img.hero { width: 100%; height: auto; border-radius: 4px; margin: 1.5rem 0; padding: 0; background: transparent; display: block; }
   img.inline-shot { width: 100%; height: auto; border-radius: 4px; margin: 1.75rem 0; display: block; }
   .services { margin: 1rem 0; padding-left: 1.25rem; }
@@ -154,12 +163,10 @@
   <a class="logo-link reveal reveal-1" href="/" aria-label="Cam's Garden Care home">
     <img class="logo-img" src="/images/logo.png" alt="Cam's Garden Care" width="630" height="147">
   </a>
-  <p class="hero-tagline reveal reveal-2">Looking after lawns, properly.</p>
+  <p class="hero-tagline reveal reveal-2">Looking after lawns, the right way.</p>
   <p class="hero-sub reveal reveal-3">Mow · Edge · Scarify · Overseed · Feed</p>
   <p class="hero-rating reveal reveal-3">
-    <a href="https://g.page/r/CVPoep9AfgK-EBM" target="_blank" rel="noopener" aria-label="Rated 5.0 out of 5 from 6 Google reviews — read them on Google">
-      <span class="stars" aria-hidden="true">★★★★★</span>5.0 from 6 reviews
-    </a>
+    <span class="stars" aria-hidden="true">★★★★★</span><a href="https://g.page/r/CVPoep9AfgK-EBM" target="_blank" rel="noopener" aria-label="Rated 5.0 out of 5 on Google — read the reviews on Google">5.0 on Google</a> · <a href="https://www.facebook.com/camsgardencare" target="_blank" rel="noopener" aria-label="More five-star reviews on Facebook">more five-star reviews on Facebook</a>
   </p>
   <div class="reveal reveal-3" data-contact-buttons></div>
 </header>
@@ -177,7 +184,14 @@
 
     <p class="lead">Come September, the mowing starts to ease off and the soil's still warm from summer — and that's the window for the work that actually changes a lawn. Not a feed, not a quick tidy, but a full renovation: scarify, aerate, top dress and overseed, done as one job while the conditions are right.</p>
 
-    <p>I take on a limited number of these each September. There's only a handful of good weeks in the year for it, and I do every one myself, one lawn at a time — so it's worth getting in touch early to hold a spot.</p>
+    <p>I take on just four of these each September. There's only a handful of good weeks in the year for it, and I do every one myself, one lawn at a time — so it's worth getting in touch early to hold a spot.</p>
+
+    <h3>How booking works</h3>
+    <ol class="services">
+      <li>Drop me a message — a couple of lines about the lawn is plenty.</li>
+      <li>I come and have a look, no obligation — a straight answer on whether renovation would help.</li>
+      <li>If it's a yes, you get a fixed quote and your September slot is held.</li>
+    </ol>
   </div>
 </section>
 
@@ -203,7 +217,7 @@
     <div class="section-label">Timing</div>
     <h2>Why September, and why the slots are limited</h2>
 
-    <p>The soil's still warm, so seed germinates quickly. The autumn rain does the watering for you. And the grass has weeks to establish before winter, without the stress of summer heat. Miss the window and you're waiting for spring, when weeds are competing hardest and the results are slower. That's the honest reason I only take a handful on — the good weeks are few, and I'd rather do a small number the right way than rush them.</p>
+    <p>The soil's still warm, so seed germinates quickly. The autumn rain does the watering for you. And the grass has weeks to establish before winter, without the stress of summer heat. Miss the window and you're waiting for spring, when weeds are competing hardest and the results are slower. That's the honest reason I only take four on — the good weeks are few, and I'd rather do a small number the right way than rush them.</p>
   </div>
 </section>
 
@@ -236,11 +250,13 @@
 
 <section class="contact" id="contact">
   <p class="hero-rating reveal reveal-3">
-    <a href="https://g.page/r/CVPoep9AfgK-EBM" target="_blank" rel="noopener" aria-label="Rated 5.0 out of 5 from 6 Google reviews — read them on Google">
-      <span class="stars" aria-hidden="true">★★★★★</span>5.0 from 6 reviews
-    </a>
+    <span class="stars" aria-hidden="true">★★★★★</span><a href="https://g.page/r/CVPoep9AfgK-EBM" target="_blank" rel="noopener" aria-label="Rated 5.0 out of 5 on Google — read the reviews on Google">5.0 on Google</a> · <a href="https://www.facebook.com/camsgardencare" target="_blank" rel="noopener" aria-label="More five-star reviews on Facebook">more five-star reviews on Facebook</a>
   </p>
   <h2>Want your autumn renovation looked at?</h2>
+  <blockquote class="testimonial">
+    Cam has done a brilliant job cutting my lawns today. Prompt arrival, friendly professional service. Garden looks amazing. Highly recommended. I've finally found a good gardener.
+    <cite>— Rita, Kippax</cite>
+  </blockquote>
   <div data-contact-buttons></div>
   <form class="contact-form" action="https://formspree.io/f/mwvznykp" method="POST">
     <input type="hidden" name="_subject" value="New enquiry — Cam's Garden Care">
@@ -264,6 +280,7 @@
       <textarea name="message" rows="4" required></textarea>
     </label>
     <button type="submit" class="btn">Send message</button>
+    <p class="form-reply-note">I usually reply the same day.</p>
   </form>
 </section>
 
