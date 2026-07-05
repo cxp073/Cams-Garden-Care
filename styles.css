@@ -134,6 +134,17 @@ body {
 .site-nav-links a:hover { opacity: 1; }
 .site-nav-current { color: var(--cream); opacity: 1; }
 .site-nav-divider { margin: 0 0.375rem; opacity: 0.45; }
+/* Shallow-end "Get a mow" CTA at the head of the nav — a cream pill so it reads
+   as an action, not just another link, against the deep-green bar. */
+.site-nav-links a.site-nav-cta {
+  display: inline-block;
+  background: var(--cream);
+  color: var(--green-darker);
+  opacity: 1;
+  padding: 0.28rem 0.7rem;
+  margin-right: 0.15rem;
+}
+.site-nav-links a.site-nav-cta:hover { opacity: 1; background: var(--cream-warm); }
 .site-nav-toggle { display: none; }
 @media (max-width: 600px) {
   .site-nav { padding: 0.55rem 1.5rem; }
@@ -155,6 +166,13 @@ body {
   .site-nav.is-js .site-nav-links a,
   .site-nav.is-js .site-nav-links .site-nav-current { display: block; padding: 0.55rem 0; opacity: 0.9; }
   .site-nav.is-js .site-nav-current { opacity: 1; }
+  /* Keep the CTA a pill (not a full-width block link) at the top of the menu. */
+  .site-nav.is-js .site-nav-links a.site-nav-cta {
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
+    margin: 0.15rem 0 0.4rem;
+    opacity: 1;
+  }
   .site-nav .site-nav-divider { display: none; }
   /* No-JS fallback: stack the links so nothing wraps awkwardly */
   .site-nav:not(.is-js) .site-nav-links a,
@@ -400,6 +418,15 @@ body > footer .footer-tagline {
 .contact-buttons .cb-btn:hover { background: transparent; color: var(--cream); }
 .contact-buttons .cb-btn:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
 .contact-buttons .cb-icon { width: 1.25em; height: 1.25em; flex: 0 0 auto; fill: currentColor; }
+/* Primary "Get a mow" — the shallow-end entry. Same .cb-btn shape/size, but a
+   deep-green fill (vs the cream WhatsApp/Call pair) marks it as the dominant
+   action; full-width so it sits on its own row above the secondary pair. */
+.contact-buttons .cb-get-a-mow {
+  flex: 1 1 100%;
+  background: var(--green-darker);
+  color: var(--cream);
+}
+.contact-buttons .cb-get-a-mow:hover { background: var(--cream); color: var(--green-darker); }
 @media (max-width: 600px) {
   .contact-buttons { flex-direction: column; max-width: 340px; }
   .contact-buttons .cb-btn { width: 100%; }
@@ -456,6 +483,32 @@ body > footer .footer-tagline {
 }
 .sticky-logo { display: inline-flex; align-items: center; line-height: 0; }
 .sticky-logo img { height: 36px; width: auto; display: block; }
+/* Right-hand cluster: primary "Get a mow" CTA + the Services dropdown. */
+.sticky-actions { display: inline-flex; align-items: center; gap: 0.6rem; }
+/* Primary CTA on the cream bar — deep-green fill, cream text so it reads as the
+   dominant action; ~44px tall for a comfortable tap target. */
+.sticky-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.5rem 1.15rem;
+  background: var(--green-darker);
+  color: var(--cream);
+  text-decoration: none;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--green-darker);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.sticky-cta:hover { background: transparent; color: var(--green-darker); }
+.sticky-cta:focus-visible { outline: 2px solid var(--green-darker); outline-offset: 2px; }
+@media (max-width: 600px) {
+  .sticky-actions { gap: 0.4rem; }
+  .sticky-cta { padding: 0.5rem 0.9rem; letter-spacing: 0.1em; }
+}
 .sticky-services { position: relative; }
 .sticky-services-btn {
   display: inline-flex;

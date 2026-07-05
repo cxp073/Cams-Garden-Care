@@ -13,6 +13,9 @@
 
   var WHATSAPP_URL = "https://wa.me/447713924067?text=Hi%20Cam%2C%20I'd%20like%20to%20ask%20about%20lawn%20care";
   var TEL_URL = "tel:+447713924067";
+  /* Low-friction "just cut my grass" entry: pre-filled WhatsApp so the visitor
+   * only adds a postcode. No plan choice required. Wording is locked. */
+  var MOW_URL = "https://wa.me/447713924067?text=Hi%20Cam%2C%20I'd%20like%20to%20get%20a%20mow.%20I'm%20in%20%5Bpostcode%5D.";
 
   var WHATSAPP_ICON =
     '<svg class="cb-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
@@ -26,6 +29,10 @@
 
   function markup() {
     return (
+      '<a class="cb-btn cb-get-a-mow js-get-a-mow" href="' + MOW_URL + '" target="_blank" ' +
+        'rel="noopener" aria-label="Get a mow — message Cam on WhatsApp">' +
+        '<span>Get a mow</span>' +
+      '</a>' +
       '<a class="cb-btn cb-whatsapp" href="' + WHATSAPP_URL + '" target="_blank" rel="noopener" ' +
         'aria-label="Message Cam on WhatsApp" data-cb-method="whatsapp">' +
         WHATSAPP_ICON + '<span>WhatsApp</span>' +
@@ -62,7 +69,7 @@
       el.innerHTML = markup();
     }
 
-    var buttons = document.querySelectorAll(".contact-buttons .cb-btn");
+    var buttons = document.querySelectorAll(".contact-buttons .cb-btn[data-cb-method]");
     for (var j = 0; j < buttons.length; j++) {
       (function (btn) {
         btn.addEventListener("click", function () {
@@ -119,6 +126,9 @@
         '<a class="sticky-logo" href="/" aria-label="Cam\'s Garden Care home">' +
           '<img src="/images/cams-logo-green.png" alt="Cam\'s Garden Care" width="144" height="36">' +
         "</a>" +
+        '<div class="sticky-actions">' +
+        '<a class="sticky-cta js-get-a-mow" href="' + MOW_URL + '" target="_blank" rel="noopener" ' +
+          'aria-label="Get a mow — message Cam on WhatsApp">Get a mow</a>' +
         '<div class="sticky-services">' +
           '<button class="sticky-services-btn" type="button" aria-haspopup="true" ' +
             'aria-expanded="false" aria-controls="sticky-services-menu">' +
@@ -126,6 +136,7 @@
           "</button>" +
           '<ul class="sticky-services-menu" id="sticky-services-menu" role="menu" ' +
             'aria-label="Services" hidden>' + items + "</ul>" +
+        "</div>" +
         "</div>" +
       "</div>"
     );
@@ -191,10 +202,24 @@
     }
   }
 
+  /* "Get a mow" taps — the shallow-end CTA lives in three places (hero, sticky
+   * bar, drop-down nav), two injected and one in static page markup. A single
+   * delegated listener counts a tap wherever it appears. Plain event, like the
+   * WhatsApp/Call buttons above; no conversion label, no gclid. */
+  function initGetAMowTracking() {
+    document.addEventListener("click", function (e) {
+      var t = e.target.closest ? e.target.closest(".js-get-a-mow") : null;
+      if (t && typeof gtag === "function") {
+        gtag("event", "get_a_mow", {});
+      }
+    });
+  }
+
   function boot() {
     init();
     initNav();
     initStickyHeader();
+    initGetAMowTracking();
   }
 
   if (document.readyState === "loading") {
