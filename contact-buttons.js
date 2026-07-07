@@ -6,7 +6,8 @@
  *
  * Attribution note: these buttons deliberately do NOT carry the gclid. The
  * Formspree form remains the attribution path for paid leads — these are for
- * ease of contact. See the gtag note in fireClick() below.
+ * ease of contact. Click-conversion tracking is delegated once in
+ * initClickTracking() below (get_a_mow / whatsapp_click / call_click).
  */
 (function () {
   "use strict";
@@ -34,29 +35,14 @@
         '<span>Get a mow</span>' +
       '</a>' +
       '<a class="cb-btn cb-whatsapp" href="' + WHATSAPP_URL + '" target="_blank" rel="noopener" ' +
-        'aria-label="Message Cam on WhatsApp" data-cb-method="whatsapp">' +
+        'aria-label="Message Cam on WhatsApp">' +
         WHATSAPP_ICON + '<span>WhatsApp</span>' +
       '</a>' +
       '<a class="cb-btn cb-call" href="' + TEL_URL + '" ' +
-        'aria-label="Call Cam" data-cb-method="call">' +
+        'aria-label="Call Cam">' +
         PHONE_ICON + '<span>Call Cam</span>' +
       '</a>'
     );
-  }
-
-  function fireClick(method) {
-    /* Count WhatsApp/Call taps in Google Ads (account AW-18188133016) so this
-     * route can be measured alongside form submits. This is a plain event, not
-     * a conversion: the form keeps its dedicated conversion label for paid-lead
-     * attribution and these buttons carry no gclid.
-     *
-     * TODO: if Cam wants taps to count as a *conversion*, create a "Contact
-     * click" conversion action in the Ads account and add its label here, e.g.
-     *   gtag('event', 'conversion', { send_to: 'AW-18188133016/<LABEL>' });
-     */
-    if (typeof gtag === "function") {
-      gtag("event", "contact_click", { method: method, send_to: "AW-18188133016" });
-    }
   }
 
   function init() {
@@ -68,15 +54,8 @@
       el.classList.add("contact-buttons");
       el.innerHTML = markup();
     }
-
-    var buttons = document.querySelectorAll(".contact-buttons .cb-btn[data-cb-method]");
-    for (var j = 0; j < buttons.length; j++) {
-      (function (btn) {
-        btn.addEventListener("click", function () {
-          fireClick(btn.getAttribute("data-cb-method"));
-        });
-      })(buttons[j]);
-    }
+    /* Click-conversion tracking is delegated (see initClickTracking below), so
+     * no per-button listeners are wired here. */
   }
 
   /* Site header nav: on narrow phones the four links collapse behind a
@@ -202,15 +181,48 @@
     }
   }
 
-  /* "Get a mow" taps — the shallow-end CTA lives in three places (hero, sticky
-   * bar, drop-down nav), two injected and one in static page markup. A single
-   * delegated listener counts a tap wherever it appears. Plain event, like the
-   * WhatsApp/Call buttons above; no conversion label, no gclid. */
-  function initGetAMowTracking() {
+  /* ---- Click-conversion tracking for every contact button --------------
+   * One delegated listener on <document> maps each contact button to its own
+   * named gtag event. The base tag (AW-18188133016) is already loaded in each
+   * page's <head>, so this only ADDS events — it never reinstalls the tag.
+   *
+   *   .js-get-a-mow  -> get_a_mow      (hero, sticky bar, burger nav)
+   *   .cb-whatsapp   -> whatsapp_click (hero)
+   *   .cb-call       -> call_click     (hero)
+   *
+   * Delegation means one physical tap fires exactly one event, wherever the
+   * button appears — no per-instance listeners, no double-firing.
+   *
+   * These are plain named events. To also count any of them as a Google Ads
+   * *conversion*, create the conversion action in the Ads UI and paste its
+   * label into the matching send_to below. This mirrors the form submit in
+   * each page's <head>, which sends to 'AW-18188133016/KVI3COH5sLwcEJjF4-BD'. */
+  var CLICK_EVENTS = [
+    /* [ selector, event name, Ads conversion send_to ] */
+    [".js-get-a-mow", "get_a_mow", null /* TODO(Cam): 'AW-18188133016/<GET_A_MOW_LABEL>' */],
+    [".cb-whatsapp", "whatsapp_click", null /* TODO(Cam): 'AW-18188133016/<WHATSAPP_LABEL>' */],
+    [".cb-call", "call_click", null /* TODO(Cam): 'AW-18188133016/<CALL_LABEL>' */]
+  ];
+
+  function fireContactEvent(name, sendTo) {
+    if (typeof gtag !== "function") return;
+    var params = {};
+    if (sendTo) params.send_to = sendTo; /* set once Cam pastes the Ads label */
+    /* gtag ships the hit via navigator.sendBeacon, so it survives the page
+     * unloading when a tel: link opens the dialer; wa.me links open in a new
+     * tab and never unload this page. Either way the event fires before
+     * navigation and is not lost — no preventDefault needed. */
+    gtag("event", name, params);
+  }
+
+  function initClickTracking() {
     document.addEventListener("click", function (e) {
-      var t = e.target.closest ? e.target.closest(".js-get-a-mow") : null;
-      if (t && typeof gtag === "function") {
-        gtag("event", "get_a_mow", {});
+      if (!e.target || !e.target.closest) return;
+      for (var i = 0; i < CLICK_EVENTS.length; i++) {
+        if (e.target.closest(CLICK_EVENTS[i][0])) {
+          fireContactEvent(CLICK_EVENTS[i][1], CLICK_EVENTS[i][2]);
+          return; /* one tap = one event */
+        }
       }
     });
   }
@@ -219,7 +231,7 @@
     init();
     initNav();
     initStickyHeader();
-    initGetAMowTracking();
+    initClickTracking();
   }
 
   if (document.readyState === "loading") {
