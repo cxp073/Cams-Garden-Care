@@ -193,26 +193,26 @@
    * Delegation means one physical tap fires exactly one event, wherever the
    * button appears — no per-instance listeners, no double-firing.
    *
-   * These are plain named events. To also count any of them as a Google Ads
-   * *conversion*, create the conversion action in the Ads UI and paste its
-   * label into the matching send_to below. This mirrors the form submit in
-   * each page's <head>, which sends to 'AW-18188133016/KVI3COH5sLwcEJjF4-BD'. */
+   * Google Ads counts a click-conversion only when the gtag event is named
+   * "conversion" and send_to carries the conversion label, so each button
+   * fires gtag('event','conversion',{send_to:...}) with its own label below.
+   * The second column is kept purely as a human-readable id for which button
+   * fired. This mirrors the form submit in each page's <head>, which sends to
+   * 'AW-18188133016/KVI3COH5sLwcEJjF4-BD'. */
   var CLICK_EVENTS = [
-    /* [ selector, event name, Ads conversion send_to ] */
-    [".js-get-a-mow", "get_a_mow", null /* TODO(Cam): 'AW-18188133016/<GET_A_MOW_LABEL>' */],
-    [".cb-whatsapp", "whatsapp_click", null /* TODO(Cam): 'AW-18188133016/<WHATSAPP_LABEL>' */],
-    [".cb-call", "call_click", null /* TODO(Cam): 'AW-18188133016/<CALL_LABEL>' */]
+    /* [ selector, button id (for reference), Ads conversion send_to ] */
+    [".js-get-a-mow", "get_a_mow", "AW-18188133016/3QQ-CKfk_cscEJjF4-BD"],
+    [".cb-whatsapp", "whatsapp_click", "AW-18188133016/gvbNCKTk_cscEJjF4-BD"],
+    [".cb-call", "call_click", "AW-18188133016/yQl_CKrk_cscEJjF4-BD"]
   ];
 
   function fireContactEvent(name, sendTo) {
-    if (typeof gtag !== "function") return;
-    var params = {};
-    if (sendTo) params.send_to = sendTo; /* set once Cam pastes the Ads label */
+    if (typeof gtag !== "function" || !sendTo) return;
     /* gtag ships the hit via navigator.sendBeacon, so it survives the page
      * unloading when a tel: link opens the dialer; wa.me links open in a new
      * tab and never unload this page. Either way the event fires before
      * navigation and is not lost — no preventDefault needed. */
-    gtag("event", name, params);
+    gtag("event", "conversion", { send_to: sendTo });
   }
 
   function initClickTracking() {
