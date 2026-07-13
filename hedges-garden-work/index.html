@@ -144,6 +144,14 @@
   ol.photo-steps { margin: 1rem 0 1.25rem; padding-left: 1.5rem; }
   ol.photo-steps li { margin: 0.55rem 0; padding-left: 0.35rem; }
   .photo-steps-note { font-style: italic; color: var(--green-mid); margin: 0 0 1.5rem; }
+  /* Closing line — moved out of its own section to hang quietly under the one
+     body CTA. Serif italic house style, but a size down and a tight top margin
+     so it doesn't compete with the button above it. No box, border or ornament. */
+  .closing-line { font-family: 'Newsreader', serif; font-style: italic; font-size: 1rem; line-height: 1.5; color: var(--green-mid); max-width: 48ch; margin: 1.25rem 0 0; }
+  .closing-line-attr { font-style: italic; font-size: 0.9rem; color: var(--green-mid); margin: 0.4rem 0 0; }
+  /* Quote now closes this section, so pull the bottom in — no orphaned band
+     before the section that follows. */
+  .section-how-it-works { padding-bottom: 3rem; }
   /* Hero secondary "Call" reads as an outline on the green hero, so the solid
      WhatsApp button stays the dominant action. The primary uses the shared
      .cb-get-a-mow green fill; only the secondary is restyled here. */
@@ -213,11 +221,6 @@
     </ol>
 
     <p class="photo-steps-note">I'll come back to you with a price, usually the same evening.</p>
-
-    <!-- Inline WhatsApp CTA — shared .cb-whatsapp conversion hook; photo-quote pre-fill. -->
-    <div class="contact-buttons">
-      <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I%27d%20like%20a%20quote%20for%20some%20garden%20work.%20Here%20are%20some%20photos.%20I%27m%20in%20%5Bpostcode%5D" target="_blank" rel="noopener" aria-label="Send Cam photos on WhatsApp and get a price for garden work"><span>Send photos, get a price</span></a>
-    </div>
   </div>
 </section>
 
@@ -250,30 +253,21 @@
   </div>
 </section>
 
-<section>
+<section class="section-how-it-works">
   <div class="container">
     <div class="section-label">How It Works</div>
     <h2>How a garden job works</h2>
 
     <p>Send me a few photos on WhatsApp with a line about what you'd like doing. I'll come back with a price, usually the same evening — no waiting in for a doorstep quote. If you're happy with it, I'll book you in, turn up on the day and get it done.</p>
 
-    <!-- Inline WhatsApp CTA — shared .cb-whatsapp conversion hook; photo-quote pre-fill. -->
+    <!-- Inline WhatsApp CTA — shared .cb-whatsapp conversion hook; photo-quote pre-fill.
+         This is the single body CTA; the moved closing line sits quietly beneath it. -->
     <div class="contact-buttons">
       <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I%27d%20like%20a%20quote%20for%20some%20garden%20work.%20Here%20are%20some%20photos.%20I%27m%20in%20%5Bpostcode%5D" target="_blank" rel="noopener" aria-label="Send Cam photos on WhatsApp and get a price for garden work"><span>Send photos, get a price</span></a>
     </div>
-  </div>
-</section>
 
-<section>
-  <div class="container">
-    <p>Whatever your garden needs — a single border or the whole thing looking its best — send me a photo and I'll tell you what it'll cost.</p>
-
-    <p class="signoff">— Cam</p>
-
-    <!-- Inline WhatsApp CTA — shared .cb-whatsapp conversion hook; photo-quote pre-fill. -->
-    <div class="contact-buttons">
-      <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I%27d%20like%20a%20quote%20for%20some%20garden%20work.%20Here%20are%20some%20photos.%20I%27m%20in%20%5Bpostcode%5D" target="_blank" rel="noopener" aria-label="Send Cam photos on WhatsApp and get a price for garden work"><span>Send photos, get a price</span></a>
-    </div>
+    <p class="closing-line">Whatever your garden needs — a single border or the whole thing looking its best — send me a photo and I'll tell you what it'll cost.</p>
+    <p class="closing-line-attr">— Cam</p>
   </div>
 </section>
 
