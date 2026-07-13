@@ -33,6 +33,12 @@
   var CTA_ARIA = IS_GARDEN_PAGE
     ? "Message Cam on WhatsApp about garden work"
     : "Get a mow — message Cam on WhatsApp";
+  /* Conversion hook for the primary CTA. On the garden-work page the CTA is a
+   * general WhatsApp enquiry, so it fires the shared whatsapp_click conversion
+   * (same as the inline .cb-whatsapp buttons) rather than get_a_mow. The class
+   * is purely a tracking hook — it carries no styling — so swapping it leaves
+   * the button's look untouched. Every other page keeps js-get-a-mow. */
+  var CTA_TRACK_CLASS = IS_GARDEN_PAGE ? "cb-whatsapp" : "js-get-a-mow";
 
   var WHATSAPP_ICON =
     '<svg class="cb-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
@@ -46,7 +52,7 @@
 
   function markup() {
     return (
-      '<a class="cb-btn cb-get-a-mow js-get-a-mow" href="' + CTA_URL + '" target="_blank" ' +
+      '<a class="cb-btn cb-get-a-mow ' + CTA_TRACK_CLASS + '" href="' + CTA_URL + '" target="_blank" ' +
         'rel="noopener" aria-label="' + CTA_ARIA + '">' +
         '<span>' + CTA_LABEL + '</span>' +
       '</a>' +
@@ -122,7 +128,7 @@
           '<img src="/images/cams-logo-green.png" alt="Cam\'s Garden Care" width="144" height="36">' +
         "</a>" +
         '<div class="sticky-actions">' +
-        '<a class="sticky-cta js-get-a-mow" href="' + CTA_URL + '" target="_blank" rel="noopener" ' +
+        '<a class="sticky-cta ' + CTA_TRACK_CLASS + '" href="' + CTA_URL + '" target="_blank" rel="noopener" ' +
           'aria-label="' + CTA_ARIA + '">' + CTA_LABEL + '</a>' +
         '<div class="sticky-services">' +
           '<button class="sticky-services-btn" type="button" aria-haspopup="true" ' +
