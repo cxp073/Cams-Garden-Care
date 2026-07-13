@@ -127,6 +127,19 @@
   .contact .phone:hover { text-decoration: underline; }
   .contact > p > a { color: var(--cream); font-weight: bold; text-decoration: none; }
   .contact > p > a:hover { text-decoration: underline; }
+  /* Inline WhatsApp CTAs at the end of the two "now" sections. They reuse the
+     shared primary button (.cb-get-a-mow) but live inside .container, so two
+     things need restoring for that reused button — no new button styling is
+     introduced here (shape, fill, padding and font all come from the class):
+       1. Left-align with the body copy (the component centres by default).
+       2. The button's own cream text — .container's link-colour rule is more
+          specific than the component's and would otherwise darken it to
+          green-on-green. Its hover colours are restored to match. */
+  .container .contact-buttons { justify-content: flex-start; margin-left: 0; margin-right: 0; }
+  .container .cb-get-a-mow:link,
+  .container .cb-get-a-mow:visited { color: var(--cream); text-decoration: none; }
+  .container .cb-get-a-mow:hover,
+  .container .cb-get-a-mow:active { color: var(--green-darker); text-decoration: none; }
   @media (max-width: 600px) {
     h1 { font-size: 1.9rem; }
   }
@@ -173,6 +186,15 @@
     <h2>Lawns are my main thing — but I take on more than the mowing</h2>
 
     <p class="lead">The lawn is where I put most of my attention, and it's what I'm known for. But a garden is more than its grass, and I take on the rest of it too — the borders, the shrubs, the weeding, the hedges, the general tidying that keeps a garden looking the way you want it to look. Some of that work has a season and some of it doesn't, and I think it's worth being clear about which is which, because there's more that can be done in the middle of summer than most people assume.</p>
+
+    <!-- Inline WhatsApp CTA. Reuses the site's primary green button (.cb-get-a-mow)
+         and the shared .cb-whatsapp click-conversion hook wired in contact-buttons.js,
+         so it fires the same WhatsApp conversion as the header button. Left-aligned to
+         the body copy on desktop; the component's own media query makes it full-width
+         on mobile. -->
+    <div class="contact-buttons">
+      <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I'd%20like%20some%20help%20in%20the%20garden.%20I'm%20in%20%5Bpostcode%5D." target="_blank" rel="noopener" aria-label="Message Cam on WhatsApp about your garden"><span>Message me about your garden</span></a>
+    </div>
   </div>
 </section>
 
@@ -184,6 +206,12 @@
     <p>Weeding and border work, shrub pruning, cutting back what's grown into the path, lifting a bed that's got busy, general garden tidy-ups — all of that is summer work, and I'm taking it on now alongside the mowing round. Lighter hedge trimming is fine at this time of year too, as long as it's a maintenance cut rather than a hard one, and as long as I've checked the hedge over for nests first. Most hedges just want keeping in shape, and that's a job I'm happy to do in July.</p>
 
     <p>It's always me doing it, the same person each visit, someone who knows the plants and works with them rather than cutting everything back hard and hoping for the best.</p>
+
+    <!-- Inline WhatsApp CTA — see the note in Section 1. Same green primary button and
+         shared WhatsApp conversion hook; only the label and pre-filled message differ. -->
+    <div class="contact-buttons">
+      <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I've%20got%20some%20garden%20work%20I'd%20like%20doing.%20I'm%20in%20%5Bpostcode%5D." target="_blank" rel="noopener" aria-label="Message Cam on WhatsApp about summer garden work"><span>Message me about summer garden work</span></a>
+    </div>
   </div>
 </section>
 
