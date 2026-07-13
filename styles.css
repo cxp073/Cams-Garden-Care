@@ -490,10 +490,15 @@ body > footer .footer-tagline {
   margin: 0 auto;
   padding: 0.4rem 1.25rem;
 }
-.sticky-logo { display: inline-flex; align-items: center; line-height: 0; }
-.sticky-logo img { height: 36px; width: auto; display: block; }
-/* Right-hand cluster: primary "Get a mow" CTA + the Services dropdown. */
-.sticky-actions { display: inline-flex; align-items: center; gap: 0.6rem; }
+/* Logo is the flexible element: it may shrink so the right-hand cluster always
+   has room. This is what prevents the CTA from ever riding over the wordmark at
+   narrow widths — the two-item space-between layout can only overlap if neither
+   item yields, so the logo yields. */
+.sticky-logo { display: inline-flex; align-items: center; line-height: 0; flex: 0 1 auto; min-width: 0; }
+.sticky-logo img { width: 144px; height: auto; max-width: 100%; display: block; }
+/* Right-hand cluster: primary CTA + the Services dropdown. Fixed size — it keeps
+   its full width and the logo gives way, never the other way round. */
+.sticky-actions { display: inline-flex; align-items: center; gap: 0.6rem; flex: 0 0 auto; }
 /* Primary CTA on the cream bar — deep-green fill, cream text so it reads as the
    dominant action; ~44px tall for a comfortable tap target. */
 .sticky-cta {
@@ -510,13 +515,19 @@ body > footer .footer-tagline {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   border: 1.5px solid var(--green-darker);
+  white-space: nowrap;
   transition: background 0.25s ease, color 0.25s ease;
 }
 .sticky-cta:hover { background: transparent; color: var(--green-darker); }
 .sticky-cta:focus-visible { outline: 2px solid var(--green-darker); outline-offset: 2px; }
 @media (max-width: 600px) {
-  .sticky-actions { gap: 0.4rem; }
-  .sticky-cta { padding: 0.5rem 0.9rem; letter-spacing: 0.1em; }
+  /* Tighten the bar on phones so the logo keeps a readable size while the CTA
+     and Services still fit on one row without collision. The right-hand cluster
+     is the width to trim here — every px it sheds is a px the logo keeps. */
+  .sticky-bar-inner { padding: 0.4rem 0.8rem; }
+  .sticky-actions { gap: 0.3rem; }
+  .sticky-cta { min-height: 40px; padding: 0.45rem 0.65rem; font-size: 0.72rem; letter-spacing: 0.04em; }
+  .sticky-services-btn { padding: 0.55rem 0.3rem; font-size: 0.72rem; letter-spacing: 0.04em; }
 }
 .sticky-services { position: relative; }
 .sticky-services-btn {
