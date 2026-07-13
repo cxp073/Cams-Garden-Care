@@ -13,7 +13,7 @@
 </script>
 
 <title>Garden Work &amp; Hedges – Garforth &amp; Kippax | Cam's Garden Care</title>
-<meta name="description" content="Weeding, borders, shrub pruning, hedge trimming and general garden tidy-ups across Garforth, Kippax and Great Preston. Message me and we'll talk it through.">
+<meta name="description" content="Weeding, borders, shrub pruning, hedge trimming and general garden tidy-ups across Garforth, Kippax and Great Preston. Send me a few photos on WhatsApp and I'll come back with a price.">
 
 <link rel="canonical" href="https://camsgardencare.co.uk/hedges-garden-work/">
 
@@ -22,7 +22,7 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:site_name" content="Cam's Garden Care">
 <meta property="og:title" content="Garden Work &amp; Hedges – Garforth &amp; Kippax | Cam's Garden Care">
-<meta property="og:description" content="Weeding, borders, shrub pruning, hedge trimming and general garden tidy-ups across Garforth, Kippax and Great Preston. Message me and we'll talk it through.">
+<meta property="og:description" content="Weeding, borders, shrub pruning, hedge trimming and general garden tidy-ups across Garforth, Kippax and Great Preston. Send me a few photos on WhatsApp and I'll come back with a price.">
 <meta property="og:url" content="https://camsgardencare.co.uk/hedges-garden-work/">
 <meta property="og:image" content="https://camsgardencare.co.uk/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -31,7 +31,7 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Garden Work &amp; Hedges – Garforth &amp; Kippax | Cam's Garden Care">
-<meta name="twitter:description" content="Weeding, borders, shrub pruning, hedge trimming and general garden tidy-ups across Garforth, Kippax and Great Preston. Message me and we'll talk it through.">
+<meta name="twitter:description" content="Weeding, borders, shrub pruning, hedge trimming and general garden tidy-ups across Garforth, Kippax and Great Preston. Send me a few photos on WhatsApp and I'll come back with a price.">
 <meta name="twitter:image" content="https://camsgardencare.co.uk/images/og-image.jpg">
 
 <meta name="theme-color" content="#1F3D2E">
@@ -93,7 +93,7 @@
   "name": "Hedges, Borders & Garden Work",
   "serviceType": "Hedge trimming and garden work",
   "url": "https://camsgardencare.co.uk/hedges-garden-work/",
-  "description": "Hedge trimming and shaping, shrub pruning, border tidying and weeding, and general garden tidy-ups — mainly through the cooler months, when hedge and shrub work is best done.",
+  "description": "Hedge trimming and shaping, shrub pruning, border tidying and weeding, and general garden tidy-ups. Send a few photos and I'll come back with a price, usually the same evening.",
   "provider": { "@id": "https://camsgardencare.co.uk/#business" },
   "areaServed": [
     { "@type": "Place", "name": "Garforth" },
@@ -140,6 +140,15 @@
   .container .cb-get-a-mow:visited { color: var(--cream); text-decoration: none; }
   .container .cb-get-a-mow:hover,
   .container .cb-get-a-mow:active { color: var(--green-darker); text-decoration: none; }
+  /* "Which photos to send" — plain numbered instructions, no card grid. */
+  ol.photo-steps { margin: 1rem 0 1.25rem; padding-left: 1.5rem; }
+  ol.photo-steps li { margin: 0.55rem 0; padding-left: 0.35rem; }
+  .photo-steps-note { font-style: italic; color: var(--green-mid); margin: 0 0 1.5rem; }
+  /* Hero secondary "Call" reads as an outline on the green hero, so the solid
+     WhatsApp button stays the dominant action. The primary uses the shared
+     .cb-get-a-mow green fill; only the secondary is restyled here. */
+  .hero-photo-cta .cb-call { background: transparent; color: var(--cream); }
+  .hero-photo-cta .cb-call:hover { background: var(--cream); color: var(--green-deep); }
   @media (max-width: 600px) {
     h1 { font-size: 1.9rem; }
   }
@@ -156,8 +165,6 @@
     <span class="site-nav-divider" aria-hidden="true">·</span>
     <a href="/lawn-feeding-seaweed/">Lawn feeding</a>
     <span class="site-nav-divider" aria-hidden="true">·</span>
-    <a href="/lawn-renovation/">Lawn renovation</a>
-    <span class="site-nav-divider" aria-hidden="true">·</span>
     <span class="site-nav-current" aria-current="page">Garden work &amp; hedges</span>
   </div>
 </nav>
@@ -171,26 +178,53 @@
   <p class="hero-rating reveal reveal-3">
     <span class="stars" aria-hidden="true">★★★★★</span><a href="https://g.page/r/CVPoep9AfgK-EBM" target="_blank" rel="noopener" aria-label="Rated 5.0 out of 5 on Google — read the reviews on Google">5.0 on Google</a> · <a href="https://www.facebook.com/camsgardencare" target="_blank" rel="noopener" aria-label="More five-star reviews on Facebook">more five-star reviews on Facebook</a>
   </p>
-  <div class="reveal reveal-3" data-contact-buttons></div>
+  <!-- Primary conversion route: WhatsApp photo-quote (solid green) + Call (outline).
+       Both use the shared delegated click tracking in /contact-buttons.js —
+       .cb-whatsapp fires the WhatsApp conversion label, .cb-call the Call label —
+       so no per-button listener is wired here and "Get a mow" never fires. -->
+  <div class="contact-buttons hero-photo-cta reveal reveal-3">
+    <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I%27d%20like%20a%20quote%20for%20some%20garden%20work.%20Here%20are%20some%20photos.%20I%27m%20in%20%5Bpostcode%5D" target="_blank" rel="noopener" aria-label="Send Cam photos on WhatsApp and get a price for garden work"><span>Send photos, get a price</span></a>
+    <a class="cb-btn cb-call" href="tel:+447713924067" aria-label="Call Cam on 07713 924067"><span>Call 07713 924067</span></a>
+  </div>
 </header>
 
 <section>
   <div class="container">
     <div class="section-label">Garden Work &amp; Hedges</div>
-    <h1>Garden Work, Borders &amp; Hedges</h1>
-    <p class="tagline">More than just the mowing — and most of it can be done right now.</p>
+    <h1>Garden work, borders and hedges — priced from a photo</h1>
+    <p class="tagline">More than just the mowing. Send me a few photos and I'll send you back a price.</p>
 
     <!-- Cam to confirm final filename/Drive ID: a good garden/hedge fill image -->
     <img class="hero" src="/images/lawn-borders-summer.jpg" alt="A tidy, well-shaped garden in Great Preston." width="1360" height="1020" fetchpriority="high">
 
-    <p class="lead">Not everything in the garden has to wait for the cooler months. Here's what I'm taking on right now.</p>
+    <p class="lead">Hedges, shrubs, borders and general garden work — I quote the lot from photos, so there's no waiting in for me to call round. Send me what you've got and I'll come back with a price.</p>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="section-label">Right Now</div>
-    <h2>What I can do this month</h2>
+    <div class="section-label">Send Photos</div>
+    <h2>Which photos to send</h2>
+
+    <ol class="photo-steps">
+      <li>One wide shot of the whole area, taken from a few steps back so I can see the full run.</li>
+      <li>One close-up with something in frame for scale — a wheelie bin, a fence panel, or yourself.</li>
+      <li>A quick line on what you'd like done, and roughly when.</li>
+    </ol>
+
+    <p class="photo-steps-note">I'll come back to you with a price, usually the same evening.</p>
+
+    <!-- Inline WhatsApp CTA — shared .cb-whatsapp conversion hook; photo-quote pre-fill. -->
+    <div class="contact-buttons">
+      <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I%27d%20like%20a%20quote%20for%20some%20garden%20work.%20Here%20are%20some%20photos.%20I%27m%20in%20%5Bpostcode%5D" target="_blank" rel="noopener" aria-label="Send Cam photos on WhatsApp and get a price for garden work"><span>Send photos, get a price</span></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">What I Do</div>
+    <h2>What I take on</h2>
 
     <ul class="services">
       <li>Weeding and border tidying</li>
@@ -201,24 +235,18 @@
       <li>General garden tidy-ups</li>
     </ul>
 
-    <p>All of that is summer work, and I'm taking it on now alongside the mowing round. Lighter hedge trimming is fine at this time of year too, as long as it's a maintenance cut and I've checked the hedge over for nests first.</p>
-
-    <!-- Inline WhatsApp CTA — see the note in Section 1. Same green primary button and
-         shared WhatsApp conversion hook; only the label and pre-filled message differ. -->
-    <div class="contact-buttons">
-      <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I've%20got%20some%20garden%20work%20I'd%20like%20doing.%20I'm%20in%20%5Bpostcode%5D." target="_blank" rel="noopener" aria-label="Message Cam on WhatsApp about summer garden work"><span>Message me about summer garden work</span></a>
-    </div>
+    <p>Hedges, shrubs, borders and general garden work are all bookable now. I quote each job from your photos and confirm the price with you on the day — so send a few pictures and I'll tell you what it'll cost.</p>
   </div>
 </section>
 
 <section>
   <div class="container">
     <div class="section-label">Why Me</div>
-    <h2>The same person, every visit</h2>
+    <h2>The same face, every visit</h2>
 
     <p class="lead">A garden is more than its grass, and it wants someone who knows what they're looking at — what to cut, what to leave, and when. I do the borders, the shrubs, the hedges and the tidying, and I work with the plants rather than cutting everything back hard and hoping it recovers.</p>
 
-    <p>It's always me doing it. Same person each visit, so I know your garden and I know what we did last time.</p>
+    <p>It's only ever me. Same face every visit, so I know your garden and I remember what I did last time. You're not booking a rota of different people — you're booking me.</p>
   </div>
 </section>
 
@@ -227,33 +255,24 @@
     <div class="section-label">How It Works</div>
     <h2>How a garden job works</h2>
 
-    <p>I'll come and have a look, we'll agree what needs doing, and I'll get on with it. I work by the hour or by the half-day depending on the size of the job, so it's as easy to sort one overgrown border as it is to spend a day getting the whole garden back to where you want it.</p>
+    <p>Send me a few photos on WhatsApp with a line about what you'd like doing. I'll come back with a price, usually the same evening — no waiting in for a doorstep quote. If you're happy with it, I'll book you in, turn up on the day and get it done.</p>
 
-    <!-- Inline WhatsApp CTA — see the note in Section 1. Same green primary button and
-         shared WhatsApp conversion hook; only the label and pre-filled message differ. -->
+    <!-- Inline WhatsApp CTA — shared .cb-whatsapp conversion hook; photo-quote pre-fill. -->
     <div class="contact-buttons">
-      <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I've%20got%20some%20garden%20work%20I'd%20like%20a%20look%20at.%20I'm%20in%20%5Bpostcode%5D." target="_blank" rel="noopener" aria-label="Message Cam on WhatsApp to take a look at your garden work"><span>Message me and I'll take a look</span></a>
+      <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I%27d%20like%20a%20quote%20for%20some%20garden%20work.%20Here%20are%20some%20photos.%20I%27m%20in%20%5Bpostcode%5D" target="_blank" rel="noopener" aria-label="Send Cam photos on WhatsApp and get a price for garden work"><span>Send photos, get a price</span></a>
     </div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="section-label">Later In The Year</div>
-    <h2>The bigger hedge work belongs in autumn</h2>
-
-    <p>There's one thing I won't do in summer, and that's take a hedge back hard. Reductions, reshaping an overgrown hedge, cutting into old wood — that work belongs in autumn and winter, once nesting season is done and the plants are heading into dormancy. It suits the hedge and it suits the wildlife, and I'd rather work that way regardless of what the calendar says.</p>
-
-    <p>So if you've got a hedge that needs more than a trim, the useful thing to do is get in touch now rather than in October. I'll come and have a look, we'll agree what it needs, and I'll put you in the diary for the autumn — there are only so many workable weeks once the weather turns, and it's a lot easier to plan it in advance than to find a slot at short notice.</p>
-
-    <p>Whatever it is in your garden, whether it's something for this month or something for later in the year, get in touch and we'll talk it through.</p>
+    <p>Whatever your garden needs — a single border or the whole thing looking its best — send me a photo and I'll tell you what it'll cost.</p>
 
     <p class="signoff">— Cam</p>
 
-    <!-- Inline WhatsApp CTA — see the note in Section 1. Same green primary button and
-         shared WhatsApp conversion hook; only the label and pre-filled message differ. -->
+    <!-- Inline WhatsApp CTA — shared .cb-whatsapp conversion hook; photo-quote pre-fill. -->
     <div class="contact-buttons">
-      <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I've%20got%20a%20hedge%20that%20needs%20doing%20in%20the%20autumn.%20I'm%20in%20%5Bpostcode%5D." target="_blank" rel="noopener" aria-label="Message Cam on WhatsApp about autumn hedge work"><span>Message me about autumn hedge work</span></a>
+      <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I%27d%20like%20a%20quote%20for%20some%20garden%20work.%20Here%20are%20some%20photos.%20I%27m%20in%20%5Bpostcode%5D" target="_blank" rel="noopener" aria-label="Send Cam photos on WhatsApp and get a price for garden work"><span>Send photos, get a price</span></a>
     </div>
   </div>
 </section>
@@ -305,7 +324,7 @@
       <textarea name="message" rows="4" required></textarea>
     </label>
     <button type="submit" class="btn">Send message</button>
-    <p class="form-reply-note">I usually reply the same day.</p>
+    <p class="form-reply-note">I'll reply, usually the same evening — and you can send your photos straight back on my reply.</p>
   </form>
 </section>
 
@@ -314,12 +333,11 @@
     <div class="section-label">Lawns</div>
     <h2>If it's the lawn you're after</h2>
 
-    <p>The grass is my main thing, and most of what I do is mowing, feeding and renovation. If that's what brought you here, have a look at those pages — or just message me and tell me what you've got.</p>
+    <p>The grass is my main thing, and most of what I do is mowing and feeding. If that's what brought you here, have a look at those pages — or just message me and tell me what you've got.</p>
 
     <ul class="services">
       <li><a href="/lawn-care-plans/">Lawn care plans</a></li>
       <li><a href="/lawn-feeding-seaweed/">Lawn feeding</a></li>
-      <li><a href="/lawn-renovation/">Lawn renovation</a></li>
     </ul>
   </div>
 </section>
@@ -334,8 +352,6 @@
     <a href="/lawn-care-plans/">Lawn care plans</a>
     <span aria-hidden="true">·</span>
     <a href="/lawn-feeding-seaweed/">Lawn feeding</a>
-    <span aria-hidden="true">·</span>
-    <a href="/lawn-renovation/">Lawn renovation</a>
     <span aria-hidden="true">·</span>
     <a href="/hedges-garden-work/">Garden work &amp; hedges</a>
     <span aria-hidden="true">·</span>
@@ -385,7 +401,7 @@
             gtag('event', 'conversion', { 'send_to': 'AW-18188133016/KVI3COH5sLwcEJjF4-BD', 'value': 1.0, 'currency': 'GBP' });
           }
           form.classList.add('is-success');
-          form.innerHTML = '<p class="form-success">Thanks — I’ve got your message and I’ll be in touch, usually the same day.</p>';
+          form.innerHTML = '<p class="form-success">Thanks — I’ve got your message. I’ll reply, usually the same evening, and you can send your photos straight back on that reply.</p>';
         }).catch(function() {
           if (btn) btn.disabled = false;
           var err = document.createElement('p');

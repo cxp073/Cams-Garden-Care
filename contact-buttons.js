@@ -109,11 +109,16 @@
   var STICKY_LINKS = [
     ["/lawn-care-plans/", "Lawn care plans"],
     ["/lawn-feeding-seaweed/", "Lawn feeding"],
+    /* Lawn renovation gets its own focused launch later, so the garden-work page
+     * keeps it off entirely — no link in the copy and none in this shared sticky
+     * menu. Every other page keeps it. */
     ["/lawn-renovation/", "Lawn renovation"],
     ["/hedges-garden-work/", "Garden work &amp; hedges"],
     ["/#areas", "Areas"],
     ["#contact", "Contact"]
-  ];
+  ].filter(function (link) {
+    return !(IS_GARDEN_PAGE && link[0] === "/lawn-renovation/");
+  });
 
   function stickyMarkup() {
     var items = "";
