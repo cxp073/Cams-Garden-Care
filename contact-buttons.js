@@ -17,6 +17,22 @@
   /* Low-friction "just cut my grass" entry: pre-filled WhatsApp so the visitor
    * only adds a postcode. No plan choice required. Wording is locked. */
   var MOW_URL = "https://wa.me/447713924067?text=Hi%20Cam%2C%20I'd%20like%20to%20get%20a%20mow.%20I'm%20in%20%5Bpostcode%5D.";
+  /* Garden-work variant of the same low-friction entry. Pre-fills a general
+   * garden enquiry so a visitor who arrived for weeding/borders/hedges isn't
+   * handed a "get a mow" message they'd have to delete and rewrite. */
+  var GARDEN_URL = "https://wa.me/447713924067?text=Hi%20Cam%2C%20I'd%20like%20some%20help%20in%20the%20garden.%20I'm%20in%20%5Bpostcode%5D.";
+
+  /* Page-aware primary CTA. The garden-work page leads with the work that's
+   * available right now, so its CTA reads "Message me" and pre-fills a garden
+   * enquiry. Every other page keeps the locked "Get a mow" wording and link. */
+  var IS_GARDEN_PAGE = /\/hedges-garden-work(\/|\/index\.html)?$/.test(
+    window.location.pathname
+  );
+  var CTA_URL = IS_GARDEN_PAGE ? GARDEN_URL : MOW_URL;
+  var CTA_LABEL = IS_GARDEN_PAGE ? "Message me" : "Get a mow";
+  var CTA_ARIA = IS_GARDEN_PAGE
+    ? "Message Cam on WhatsApp about garden work"
+    : "Get a mow — message Cam on WhatsApp";
 
   var WHATSAPP_ICON =
     '<svg class="cb-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
@@ -30,9 +46,9 @@
 
   function markup() {
     return (
-      '<a class="cb-btn cb-get-a-mow js-get-a-mow" href="' + MOW_URL + '" target="_blank" ' +
-        'rel="noopener" aria-label="Get a mow — message Cam on WhatsApp">' +
-        '<span>Get a mow</span>' +
+      '<a class="cb-btn cb-get-a-mow js-get-a-mow" href="' + CTA_URL + '" target="_blank" ' +
+        'rel="noopener" aria-label="' + CTA_ARIA + '">' +
+        '<span>' + CTA_LABEL + '</span>' +
       '</a>' +
       '<a class="cb-btn cb-whatsapp" href="' + WHATSAPP_URL + '" target="_blank" rel="noopener" ' +
         'aria-label="Message Cam on WhatsApp">' +
@@ -88,7 +104,7 @@
     ["/lawn-care-plans/", "Lawn care plans"],
     ["/lawn-feeding-seaweed/", "Lawn feeding"],
     ["/lawn-renovation/", "Lawn renovation"],
-    ["/hedges-garden-work/", "Hedges &amp; garden work"],
+    ["/hedges-garden-work/", "Garden work &amp; hedges"],
     ["/#areas", "Areas"],
     ["#contact", "Contact"]
   ];
@@ -106,8 +122,8 @@
           '<img src="/images/cams-logo-green.png" alt="Cam\'s Garden Care" width="144" height="36">' +
         "</a>" +
         '<div class="sticky-actions">' +
-        '<a class="sticky-cta js-get-a-mow" href="' + MOW_URL + '" target="_blank" rel="noopener" ' +
-          'aria-label="Get a mow — message Cam on WhatsApp">Get a mow</a>' +
+        '<a class="sticky-cta js-get-a-mow" href="' + CTA_URL + '" target="_blank" rel="noopener" ' +
+          'aria-label="' + CTA_ARIA + '">' + CTA_LABEL + '</a>' +
         '<div class="sticky-services">' +
           '<button class="sticky-services-btn" type="button" aria-haspopup="true" ' +
             'aria-expanded="false" aria-controls="sticky-services-menu">' +
