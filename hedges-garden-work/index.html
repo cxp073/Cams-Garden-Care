@@ -160,6 +160,10 @@
      .cb-get-a-mow green fill; only the secondary is restyled here. */
   .hero-photo-cta .cb-call { background: transparent; color: var(--cream); }
   .hero-photo-cta .cb-call:hover { background: var(--cream); color: var(--green-deep); }
+  /* Sitelink anchor targets. The sticky header (.sticky-bar) is position:fixed
+     and ~57px tall (44px CTA + padding), so offset the jump by that much plus a
+     little breathing room — otherwise it would cover the heading on arrival. */
+  #which-photos, #what-i-take-on, #recent-work { scroll-margin-top: 72px; }
   @media (max-width: 600px) {
     h1 { font-size: 1.9rem; }
   }
@@ -212,7 +216,7 @@
   </div>
 </section>
 
-<section>
+<section id="which-photos">
   <div class="container">
     <div class="section-label">Send Photos</div>
     <h2>Which photos to send</h2>
@@ -232,7 +236,7 @@
   </div>
 </section>
 
-<section class="section-tight">
+<section class="section-tight" id="what-i-take-on">
   <div class="container">
     <div class="section-label">What I Do</div>
     <h2>What I take on</h2>
@@ -279,7 +283,7 @@
   </div>
 </section>
 
-<section>
+<section id="recent-work">
   <div class="container">
     <div class="section-label">Recent Work</div>
     <h2>A few from the round</h2>
