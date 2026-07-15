@@ -105,6 +105,55 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to be in for a quote?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Send me a couple of photos on WhatsApp — one wide shot, one close-up with something for scale — and I'll come back with a price, usually the same evening."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if the photos aren't enough to quote from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most jobs I can price straight off a couple of good photos. Occasionally I'll ask a follow-up question, or for a bigger job I'll confirm the exact price on the day once I can see it properly in person."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When do you actually do hedge work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I take enquiries and book jobs year-round, but the cutting itself mostly happens in autumn and winter — once nesting season's finished, hedges are heading into dormancy, and that's the right time for the plant as well as for the birds. Get in touch any time and I'll get you booked into the right window."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are you insured for hedge and shrub work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — fully covered for hedge, shrub and border work, including working at height."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does hedge or garden work cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the job, so I quote from your photos rather than publish a flat rate. Mowing and feeding have set prices; hedges, shrubs, borders and general garden work I price once I've seen what's involved."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
   /* Page-specific additions — elements the shared stylesheet doesn't cover */
@@ -164,6 +213,10 @@
      and ~57px tall (44px CTA + padding), so offset the jump by that much plus a
      little breathing room — otherwise it would cover the heading on arrival. */
   #which-photos, #what-i-take-on, #recent-work { scroll-margin-top: 72px; }
+  /* FAQ */
+  .faq { margin: 1rem 0 0; }
+  .faq-q { font-size: 1.1rem; color: var(--green-deep); margin: 1.5rem 0 0.4rem; line-height: 1.3; }
+  .faq-a { margin: 0 0 1rem; }
   @media (max-width: 600px) {
     h1 { font-size: 1.9rem; }
   }
@@ -293,6 +346,32 @@
       <div class="photo"><img src="/images/pat-after-weigela.jpg" alt="A tidy garden bed with a weigela in bloom in Great Preston" loading="lazy"></div>
       <div class="photo"><img src="/images/pat-lawn-edge.jpg" alt="A cleanly edged lawn meeting a planted border" loading="lazy"></div>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">Questions</div>
+    <h2>Common questions</h2>
+
+    <div class="faq">
+      <h3 class="faq-q">Do I need to be in for a quote?</h3>
+      <p class="faq-a">No. Send me a couple of photos on WhatsApp — one wide shot, one close-up with something for scale — and I'll come back with a price, usually the same evening.</p>
+
+      <h3 class="faq-q">What if the photos aren't enough to quote from?</h3>
+      <p class="faq-a">Most jobs I can price straight off a couple of good photos. Occasionally I'll ask a follow-up question, or for a bigger job I'll confirm the exact price on the day once I can see it properly in person.</p>
+
+      <h3 class="faq-q">When do you actually do hedge work?</h3>
+      <p class="faq-a">I take enquiries and book jobs year-round, but the cutting itself mostly happens in autumn and winter — once nesting season's finished, hedges are heading into dormancy, and that's the right time for the plant as well as for the birds. Get in touch any time and I'll get you booked into the right window.</p>
+
+      <h3 class="faq-q">Are you insured for hedge and shrub work?</h3>
+      <p class="faq-a">Yes — fully covered for hedge, shrub and border work, including working at height.</p>
+
+      <h3 class="faq-q">How much does hedge or garden work cost?</h3>
+      <p class="faq-a">It depends on the job, so I quote from your photos rather than publish a flat rate. Mowing and feeding have set prices; hedges, shrubs, borders and general garden work I price once I've seen what's involved.</p>
+    </div>
+
+    <p style="text-align:center; margin-top: 2rem;"><a href="/">← Back to the main page</a></p>
   </div>
 </section>
 
