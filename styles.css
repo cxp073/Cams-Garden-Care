@@ -29,8 +29,8 @@ body {
   text-align: center;
   position: relative;
 }
-.logo-link { display: block; width: 480px; max-width: 80%; margin: 0 auto; cursor: pointer; }
-.logo-img { display: block; width: 100%; height: auto; margin: 0; }
+.logo-link { display: inline-block; cursor: pointer; }
+.logo-img { display: block; height: 88px; width: auto; margin: 0 auto; }
 .hero-tagline {
   font-family: 'Newsreader', serif;
   font-style: italic;
@@ -458,6 +458,7 @@ body > footer .footer-tagline {
      leads, the two-column lists — scales up proportionally on phones. */
   html { font-size: 112.5%; }
   .hero { padding: 2.25rem 1.5rem 2.75rem; }
+  .logo-img { height: 56px; }
   .hero-tagline { font-size: 1.25rem; margin-top: 1.5rem; }
   .hero-cta { margin-top: 1.25rem; }
   section { padding: 4rem 0; }
