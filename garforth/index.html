@@ -173,6 +173,25 @@
   .contact .phone:hover { text-decoration: underline; }
   .contact > p > a { color: var(--cream); font-weight: bold; text-decoration: none; }
   .contact > p > a:hover { text-decoration: underline; }
+  /* Hero secondary "Call" reads as an outline on the green hero, so the solid
+     "Get a mow" button stays the dominant action. The primary uses the shared
+     .cb-get-a-mow green fill; only the secondary is restyled here. */
+  .hero-photo-cta .cb-call { background: transparent; color: var(--cream); }
+  .hero-photo-cta .cb-call:hover { background: var(--cream); color: var(--green-deep); }
+  /* Inline WhatsApp CTAs after the mid-page and Local Soil pull-quotes. They
+     reuse the shared primary button (.cb-get-a-mow) but live inside
+     .container, so two things need restoring for that reused button — no new
+     button styling is introduced here (shape, fill, padding and font all come
+     from the class):
+       1. Left-align with the body copy (the component centres by default).
+       2. The button's own cream text — .container's link-colour rule is more
+          specific than the component's and would otherwise darken it to
+          green-on-green. Its hover colours are restored to match. */
+  .container .contact-buttons { justify-content: flex-start; margin-left: 0; margin-right: 0; }
+  .container .cb-get-a-mow:link,
+  .container .cb-get-a-mow:visited { color: var(--cream); text-decoration: none; }
+  .container .cb-get-a-mow:hover,
+  .container .cb-get-a-mow:active { color: var(--green-darker); text-decoration: none; }
   /* FAQ */
   .faq { margin: 1rem 0 0; }
   .faq-q { font-size: 1.1rem; color: var(--green-deep); margin: 1.5rem 0 0.4rem; line-height: 1.3; }
@@ -208,7 +227,14 @@
   <p class="hero-rating reveal reveal-3">
     <span class="stars" aria-hidden="true">★★★★★</span><a href="https://g.page/r/CVPoep9AfgK-EBM" target="_blank" rel="noopener" aria-label="Rated 5.0 out of 5 on Google — read the reviews on Google">5.0 on Google</a> · <a href="https://www.facebook.com/camsgardencare" target="_blank" rel="noopener" aria-label="More five-star reviews on Facebook">more five-star reviews on Facebook</a>
   </p>
-  <div class="reveal reveal-3" data-contact-buttons></div>
+  <!-- Primary conversion route: WhatsApp get-a-mow (solid green) + Call (outline).
+       Both use the shared delegated click tracking in /contact-buttons.js —
+       .js-get-a-mow fires the get_a_mow conversion label, .cb-call the Call label —
+       so no per-button listener is wired here. -->
+  <div class="contact-buttons hero-photo-cta reveal reveal-3">
+    <a class="cb-btn cb-get-a-mow js-get-a-mow" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I'd%20like%20to%20get%20a%20mow.%20I'm%20in%20%5Bpostcode%5D." target="_blank" rel="noopener" aria-label="Get a mow — message Cam on WhatsApp"><span>Get a mow</span></a>
+    <a class="cb-btn cb-call" href="tel:+447713924067" aria-label="Call Cam on 07713 924067"><span>Call 07713 924067</span></a>
+  </div>
 </header>
 
 <section>
@@ -259,6 +285,13 @@
     <p><strong>Hedges, borders and garden work.</strong> More than just the mowing — hedge trimming, shrub pruning and border tidying, mostly through the cooler months. <a href="/hedges-garden-work/">More on hedges and garden work →</a></p>
 
     <p class="pull-quote">The lawns I look after in Garforth get the same considered care as the rest of the round.</p>
+
+    <p>If that sounds like what your lawn's after, tell me a bit about it and I'll come back to you.</p>
+
+    <!-- Inline WhatsApp CTA — shared js-get-a-mow conversion hook; get-a-mow pre-fill. -->
+    <div class="contact-buttons">
+      <a class="cb-btn cb-get-a-mow js-get-a-mow" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I'd%20like%20to%20get%20a%20mow.%20I'm%20in%20%5Bpostcode%5D." target="_blank" rel="noopener" aria-label="Get a mow — message Cam on WhatsApp"><span>Get a mow</span></a>
+    </div>
   </div>
 </section>
 
@@ -294,6 +327,13 @@
     <p>Garforth lawns sit on the same heavy clay soil that runs through this part of West Yorkshire — which is why aerating and scarifying matter more here than people often think. The regular round keeps a lawn looking right week to week; the seasonal work is what keeps it healthy underneath.</p>
 
     <p class="pull-quote">Compaction and thatch are the quiet problems behind most of the "why won't it green up?" lawns I get asked about.</p>
+
+    <p>If compaction or thatch sounds like what's holding your lawn back, I can take a look — or if it's more than a regular cut needs, have a read about <a href="/lawn-renovation/">autumn renovation</a>.</p>
+
+    <!-- Inline WhatsApp CTA — shared js-get-a-mow conversion hook; get-a-mow pre-fill. -->
+    <div class="contact-buttons">
+      <a class="cb-btn cb-get-a-mow js-get-a-mow" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I'd%20like%20to%20get%20a%20mow.%20I'm%20in%20%5Bpostcode%5D." target="_blank" rel="noopener" aria-label="Get a mow — message Cam on WhatsApp"><span>Get a mow</span></a>
+    </div>
   </div>
 </section>
 
