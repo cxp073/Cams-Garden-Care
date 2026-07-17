@@ -125,7 +125,7 @@
     return (
       '<div class="sticky-bar-inner">' +
         '<a class="sticky-logo" href="/" aria-label="Cam\'s Garden Care home">' +
-          '<img src="/images/cams-logo-green.png" alt="Cam\'s Garden Care" width="144" height="36">' +
+          '<img src="/images/cams-logo-green.svg" alt="Cam\'s Garden Care" width="144" height="28">' +
         "</a>" +
         '<div class="sticky-actions">' +
         '<a class="sticky-cta ' + CTA_TRACK_CLASS + '" href="' + CTA_URL + '" target="_blank" rel="noopener" ' +
