@@ -92,6 +92,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<style>
+  /* Inline WhatsApp CTA in the hedges & garden work block. Reuses the shared
+     primary button (.cb-get-a-mow) but lives inside .container, so two things
+     need restoring for that reused button — no new button styling is
+     introduced here (shape, fill, padding and font all come from the class):
+       1. Left-align with the body copy (the component centres by default).
+       2. The button's own cream text — .container's link-colour rule is more
+          specific than the component's and would otherwise darken it to
+          green-on-green. Its hover colours are restored to match. */
+  .container .work-block .contact-buttons { justify-content: flex-start; margin-left: 0; margin-right: 0; }
+  .container .cb-get-a-mow:link,
+  .container .cb-get-a-mow:visited { color: var(--cream); text-decoration: none; }
+  .container .cb-get-a-mow:hover,
+  .container .cb-get-a-mow:active { color: var(--green-darker); text-decoration: none; }
+</style>
 </head>
 <body>
 
@@ -175,6 +190,10 @@
         <li>General garden work and one-off jobs</li>
       </ul>
       <p>Send me a few photos and I'll get you a price back — every garden's different, but I don't need to see it in person to quote it.</p>
+      <!-- Inline WhatsApp CTA — shared .cb-whatsapp conversion hook; photo-quote pre-fill. -->
+      <div class="contact-buttons">
+        <a class="cb-btn cb-get-a-mow cb-whatsapp" href="https://wa.me/447713924067?text=Hi%20Cam%2C%20I%27d%20like%20a%20quote%20for%20some%20garden%20work.%20Here%20are%20some%20photos.%20I%27m%20in%20%5Bpostcode%5D" target="_blank" rel="noopener" aria-label="Send Cam photos on WhatsApp and get a price for garden work"><span>Send photos, get a price</span></a>
+      </div>
     </div>
     <figure class="work-photo">
       <img src="images/pat-after-weigela.jpg" alt="A mowed lawn at Pat's, with the weigela in bloom and an island bed of yellow shrub" loading="lazy" width="1400" height="1050">
