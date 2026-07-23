@@ -256,13 +256,16 @@
    *
    * Google Ads counts a click-conversion only when the gtag event is named
    * "conversion" and send_to carries the conversion label, so each button
-   * fires gtag('event','conversion',{send_to:...}) with its own label below.
-   * The second column is kept purely as a human-readable id for which button
+   * fires gtag('event','conversion',{send_to:...}) with the label below. The
+   * second column is kept purely as a human-readable id for which button
    * fired. This mirrors the form submit in each page's <head>, which sends to
    * 'AW-18188133016/KVI3COH5sLwcEJjF4-BD'. */
   var CLICK_EVENTS = [
     /* [ selector, button id (for reference), Ads conversion send_to ] */
-    [".js-get-a-mow", "get_a_mow", "AW-18188133016/3QQ-CKfk_cscEJjF4-BD"],
+    /* Every surviving .js-get-a-mow element opens WhatsApp (like .cb-whatsapp),
+       so it records the same WhatsApp conversion rather than a separate label.
+       The button id stays "get_a_mow" for readability in the event log. */
+    [".js-get-a-mow", "get_a_mow", "AW-18188133016/gvbNCKTk_cscEJjF4-BD"],
     [".cb-whatsapp", "whatsapp_click", "AW-18188133016/gvbNCKTk_cscEJjF4-BD"],
     [".cb-call", "call_click", "AW-18188133016/yQl_CKrk_cscEJjF4-BD"]
   ];
