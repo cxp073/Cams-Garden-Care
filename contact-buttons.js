@@ -65,12 +65,10 @@
     return { service: "general", text: "Hi Cam, I found you on your website" };
   }
   var PAGE = pageContact();
-  /* The plain WhatsApp button carries the bare per-page prefill; the primary CTA
-   * and the sticky CTA also invite a postcode so the visitor only has to add
-   * that (square brackets literal, matching the old locked wording). Both are
-   * built from WA_BASE so each href still has exactly one ?text=. */
-  var WA_URL = WA_BASE + "?text=" + encodeURIComponent(PAGE.text);
-  var WA_URL_CTA = WA_BASE + "?text=" + encodeURIComponent(PAGE.text + ". I'm in [postcode]");
+  /* Every injected WhatsApp button invites a postcode so the visitor only has to
+   * add that (square brackets literal, matching the old locked wording). Built
+   * from WA_BASE, so each href still has exactly one ?text=. */
+  var WA_URL = WA_BASE + "?text=" + encodeURIComponent(PAGE.text + ". I'm in [postcode]");
   var WA_SERVICE = PAGE.service;
 
   var WHATSAPP_ICON =
@@ -88,7 +86,7 @@
   function markup(loc) {
     var attrs = ' data-service="' + WA_SERVICE + '" data-cta="' + loc + '"';
     return (
-      '<a class="cb-btn cb-get-a-mow ' + CTA_TRACK_CLASS + '" href="' + WA_URL_CTA + '" target="_blank" ' +
+      '<a class="cb-btn cb-get-a-mow ' + CTA_TRACK_CLASS + '" href="' + WA_URL + '" target="_blank" ' +
         'rel="noopener"' + attrs + ' aria-label="' + CTA_ARIA + '">' +
         '<span>' + CTA_LABEL + '</span>' +
       '</a>' +
@@ -172,7 +170,7 @@
           '<img src="/images/cams-logo-green.svg" alt="Cam\'s Garden Care" width="144" height="28">' +
         "</a>" +
         '<div class="sticky-actions">' +
-        '<a class="sticky-cta ' + CTA_TRACK_CLASS + '" href="' + WA_URL_CTA + '" target="_blank" rel="noopener" ' +
+        '<a class="sticky-cta ' + CTA_TRACK_CLASS + '" href="' + WA_URL + '" target="_blank" rel="noopener" ' +
           'data-service="' + WA_SERVICE + '" data-cta="sticky" aria-label="' + CTA_ARIA + '">' + CTA_LABEL + '</a>' +
         '<div class="sticky-services">' +
           '<button class="sticky-services-btn" type="button" aria-haspopup="true" ' +
