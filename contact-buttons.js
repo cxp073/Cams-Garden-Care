@@ -12,33 +12,66 @@
 (function () {
   "use strict";
 
-  var WHATSAPP_URL = "https://wa.me/447713924067?text=Hi%20Cam%2C%20I'd%20like%20to%20ask%20about%20lawn%20care";
   var TEL_URL = "tel:+447713924067";
-  /* Low-friction "just cut my grass" entry: pre-filled WhatsApp so the visitor
-   * only adds a postcode. No plan choice required. Wording is locked. */
-  var MOW_URL = "https://wa.me/447713924067?text=Hi%20Cam%2C%20I'd%20like%20to%20get%20a%20mow.%20I'm%20in%20%5Bpostcode%5D.";
-  /* Garden-work variant of the same low-friction entry. Pre-fills a general
-   * garden enquiry so a visitor who arrived for weeding/borders/hedges isn't
-   * handed a "get a mow" message they'd have to delete and rewrite. */
-  var GARDEN_URL = "https://wa.me/447713924067?text=Hi%20Cam%2C%20I'd%20like%20some%20help%20in%20the%20garden.%20I'm%20in%20%5Bpostcode%5D.";
+  var WA_BASE = "https://wa.me/447713924067";
 
   /* Page-aware primary CTA. The garden-work page leads with the work that's
-   * available right now, so its CTA reads "Message me" and pre-fills a garden
-   * enquiry. Every other page keeps the locked "Get a mow" wording and link. */
+   * available right now, so its CTA reads "Message me". Every other page keeps
+   * the locked "Get a mow" wording. */
   var IS_GARDEN_PAGE = /\/hedges-garden-work(\/|\/index\.html)?$/.test(
     window.location.pathname
   );
-  var CTA_URL = IS_GARDEN_PAGE ? GARDEN_URL : MOW_URL;
   var CTA_LABEL = IS_GARDEN_PAGE ? "Message me" : "Get a mow";
   var CTA_ARIA = IS_GARDEN_PAGE
     ? "Message Cam on WhatsApp about garden work"
     : "Get a mow — message Cam on WhatsApp";
-  /* Conversion hook for the primary CTA. On the garden-work page the CTA is a
-   * general WhatsApp enquiry, so it fires the shared whatsapp_click conversion
-   * (same as the inline .cb-whatsapp buttons) rather than get_a_mow. The class
-   * is purely a tracking hook — it carries no styling — so swapping it leaves
-   * the button's look untouched. Every other page keeps js-get-a-mow. */
+  /* Conversion hook for the primary CTA (unchanged). On the garden-work page it
+   * fires the shared whatsapp_click Ads conversion via .cb-whatsapp; every other
+   * page keeps .js-get-a-mow. The class is purely a tracking hook — no styling —
+   * so it leaves the button's look untouched. */
   var CTA_TRACK_CLASS = IS_GARDEN_PAGE ? "cb-whatsapp" : "js-get-a-mow";
+
+  /* Per-page WhatsApp prefill + GA4 service tag for the injected buttons,
+   * mirroring the per-page text now carried by the hardcoded links. The prefill
+   * replaces the previous baked-in wordings (get-a-mow / garden-help / ask-about
+   * -lawn-care); IS_GARDEN_PAGE wins where it and the pathname map would
+   * disagree. Exactly one ?text= is built from WA_BASE + the encoded page text
+   * (encodeURIComponent → %20 for spaces, %2C for commas), so no button ends up
+   * with a second text param. data-service feeds the GA4 whatsapp_click /
+   * phone_click events read by /js/tracking.js. */
+  function pageContact() {
+    if (IS_GARDEN_PAGE) {
+      return { service: "hedge", text: "Hi Cam, about hedge trimming" };
+    }
+    var p = window.location.pathname
+      .replace(/^\/+|\/+$/g, "")
+      .replace(/\.html$/, "");
+    if (p === "garforth") {
+      return { service: "lawn", text: "Hi Cam, about lawn mowing in Garforth" };
+    }
+    if (p === "kippax") {
+      return { service: "lawn", text: "Hi Cam, about lawn mowing in Kippax" };
+    }
+    if (p === "lawn-renovation") {
+      return { service: "renovation", text: "Hi Cam, about lawn renovation" };
+    }
+    if (p === "lawn-care-plans") {
+      return { service: "lawn", text: "Hi Cam, about a lawn care plan" };
+    }
+    if (p === "lawn-feeding-seaweed") {
+      return { service: "lawn", text: "Hi Cam, about lawn feeding" };
+    }
+    /* home and anything else → general */
+    return { service: "general", text: "Hi Cam, I found you on your website" };
+  }
+  var PAGE = pageContact();
+  /* The plain WhatsApp button carries the bare per-page prefill; the primary CTA
+   * and the sticky CTA also invite a postcode so the visitor only has to add
+   * that (square brackets literal, matching the old locked wording). Both are
+   * built from WA_BASE so each href still has exactly one ?text=. */
+  var WA_URL = WA_BASE + "?text=" + encodeURIComponent(PAGE.text);
+  var WA_URL_CTA = WA_BASE + "?text=" + encodeURIComponent(PAGE.text + ". I'm in [postcode]");
+  var WA_SERVICE = PAGE.service;
 
   var WHATSAPP_ICON =
     '<svg class="cb-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
@@ -50,17 +83,20 @@
     '<path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>' +
     '</svg>';
 
-  function markup() {
+  /* loc = the GA4 cta_location for the buttons in this mount (hero / footer /
+   * mid), resolved from where the mount sits on the page. */
+  function markup(loc) {
+    var attrs = ' data-service="' + WA_SERVICE + '" data-cta="' + loc + '"';
     return (
-      '<a class="cb-btn cb-get-a-mow ' + CTA_TRACK_CLASS + '" href="' + CTA_URL + '" target="_blank" ' +
-        'rel="noopener" aria-label="' + CTA_ARIA + '">' +
+      '<a class="cb-btn cb-get-a-mow ' + CTA_TRACK_CLASS + '" href="' + WA_URL_CTA + '" target="_blank" ' +
+        'rel="noopener"' + attrs + ' aria-label="' + CTA_ARIA + '">' +
         '<span>' + CTA_LABEL + '</span>' +
       '</a>' +
-      '<a class="cb-btn cb-whatsapp" href="' + WHATSAPP_URL + '" target="_blank" rel="noopener" ' +
+      '<a class="cb-btn cb-whatsapp" href="' + WA_URL + '" target="_blank" rel="noopener"' + attrs + ' ' +
         'aria-label="Message Cam on WhatsApp">' +
         WHATSAPP_ICON + '<span>WhatsApp</span>' +
       '</a>' +
-      '<a class="cb-btn cb-call" href="' + TEL_URL + '" ' +
+      '<a class="cb-btn cb-call" href="' + TEL_URL + '"' + attrs + ' ' +
         'aria-label="Call Cam">' +
         PHONE_ICON + '<span>Call Cam</span>' +
       '</a>'
@@ -74,7 +110,15 @@
     for (var i = 0; i < mounts.length; i++) {
       var el = mounts[i];
       el.classList.add("contact-buttons");
-      el.innerHTML = markup();
+      /* cta_location by where the mount lives: the hero header, the contact
+       * section near the foot of the page, or anywhere else (mid). */
+      var loc =
+        el.closest && el.closest(".hero")
+          ? "hero"
+          : el.closest && el.closest(".contact")
+          ? "footer"
+          : "mid";
+      el.innerHTML = markup(loc);
     }
     /* Click-conversion tracking is delegated (see initClickTracking below), so
      * no per-button listeners are wired here. */
@@ -128,8 +172,8 @@
           '<img src="/images/cams-logo-green.svg" alt="Cam\'s Garden Care" width="144" height="28">' +
         "</a>" +
         '<div class="sticky-actions">' +
-        '<a class="sticky-cta ' + CTA_TRACK_CLASS + '" href="' + CTA_URL + '" target="_blank" rel="noopener" ' +
-          'aria-label="' + CTA_ARIA + '">' + CTA_LABEL + '</a>' +
+        '<a class="sticky-cta ' + CTA_TRACK_CLASS + '" href="' + WA_URL_CTA + '" target="_blank" rel="noopener" ' +
+          'data-service="' + WA_SERVICE + '" data-cta="sticky" aria-label="' + CTA_ARIA + '">' + CTA_LABEL + '</a>' +
         '<div class="sticky-services">' +
           '<button class="sticky-services-btn" type="button" aria-haspopup="true" ' +
             'aria-expanded="false" aria-controls="sticky-services-menu">' +
