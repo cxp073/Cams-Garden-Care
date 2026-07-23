@@ -15,20 +15,15 @@
   var TEL_URL = "tel:+447713924067";
   var WA_BASE = "https://wa.me/447713924067";
 
-  /* Page-aware primary CTA. The garden-work page leads with the work that's
-   * available right now, so its CTA reads "Message me". Every other page keeps
-   * the locked "Get a mow" wording. */
+  /* Page-aware sticky-bar CTA tracking hook. The hero/contact primary CTA has
+   * been removed, so IS_GARDEN_PAGE now drives only the sticky CTA's Ads
+   * tracking class (its visible label and aria-label are both fixed strings set
+   * in stickyMarkup): the garden-work page fires the shared whatsapp_click
+   * conversion via .cb-whatsapp, every other page keeps .js-get-a-mow. The
+   * class is a tracking hook only — no styling. */
   var IS_GARDEN_PAGE = /\/hedges-garden-work(\/|\/index\.html)?$/.test(
     window.location.pathname
   );
-  var CTA_LABEL = IS_GARDEN_PAGE ? "Message me" : "Get a mow";
-  var CTA_ARIA = IS_GARDEN_PAGE
-    ? "Message Cam on WhatsApp about garden work"
-    : "Get a mow — message Cam on WhatsApp";
-  /* Conversion hook for the primary CTA (unchanged). On the garden-work page it
-   * fires the shared whatsapp_click Ads conversion via .cb-whatsapp; every other
-   * page keeps .js-get-a-mow. The class is purely a tracking hook — no styling —
-   * so it leaves the button's look untouched. */
   var CTA_TRACK_CLASS = IS_GARDEN_PAGE ? "cb-whatsapp" : "js-get-a-mow";
 
   /* Per-page WhatsApp prefill + GA4 service tag for the injected buttons,
@@ -85,12 +80,14 @@
    * mid), resolved from where the mount sits on the page. */
   function markup(loc) {
     var attrs = ' data-service="' + WA_SERVICE + '" data-cta="' + loc + '"';
+    /* In the hero, WhatsApp is the lead action: cb-get-a-mow gives it the solid
+     * full-width fill (Call drops beneath as the outline secondary, via the
+     * .hero .contact-buttons .cb-call rule in styles.css), matching the
+     * hardcoded garforth/hedges heroes. In the contact section it stays an equal
+     * member of the outline pair beside Call. */
+    var waClass = loc === "hero" ? "cb-btn cb-get-a-mow cb-whatsapp" : "cb-btn cb-whatsapp";
     return (
-      '<a class="cb-btn cb-get-a-mow ' + CTA_TRACK_CLASS + '" href="' + WA_URL + '" target="_blank" ' +
-        'rel="noopener"' + attrs + ' aria-label="' + CTA_ARIA + '">' +
-        '<span>' + CTA_LABEL + '</span>' +
-      '</a>' +
-      '<a class="cb-btn cb-whatsapp" href="' + WA_URL + '" target="_blank" rel="noopener"' + attrs + ' ' +
+      '<a class="' + waClass + '" href="' + WA_URL + '" target="_blank" rel="noopener"' + attrs + ' ' +
         'aria-label="Message Cam on WhatsApp">' +
         WHATSAPP_ICON + '<span>WhatsApp</span>' +
       '</a>' +
@@ -171,7 +168,7 @@
         "</a>" +
         '<div class="sticky-actions">' +
         '<a class="sticky-cta ' + CTA_TRACK_CLASS + '" href="' + WA_URL + '" target="_blank" rel="noopener" ' +
-          'data-service="' + WA_SERVICE + '" data-cta="sticky" aria-label="' + CTA_ARIA + '">' + CTA_LABEL + '</a>' +
+          'data-service="' + WA_SERVICE + '" data-cta="sticky" aria-label="Message Cam on WhatsApp">Message Cam</a>' +
         '<div class="sticky-services">' +
           '<button class="sticky-services-btn" type="button" aria-haspopup="true" ' +
             'aria-expanded="false" aria-controls="sticky-services-menu">' +
