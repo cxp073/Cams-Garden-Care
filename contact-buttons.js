@@ -41,28 +41,28 @@
    * phone_click events read by /js/tracking.js. */
   function pageContact() {
     if (IS_GARDEN_PAGE) {
-      return { service: "hedge", text: "Hi Cam, about hedge trimming" };
+      return { service: "hedge", text: "Hi Cam, I'm enquiring about hedges and garden work" };
     }
     var p = window.location.pathname
       .replace(/^\/+|\/+$/g, "")
       .replace(/\.html$/, "");
     if (p === "garforth") {
-      return { service: "lawn", text: "Hi Cam, about lawn mowing in Garforth" };
+      return { service: "lawn", text: "Hi Cam, I'm enquiring about lawn mowing in Garforth" };
     }
     if (p === "kippax") {
-      return { service: "lawn", text: "Hi Cam, about lawn mowing in Kippax" };
+      return { service: "lawn", text: "Hi Cam, I'm enquiring about lawn mowing in Kippax" };
     }
     if (p === "lawn-renovation") {
-      return { service: "renovation", text: "Hi Cam, about lawn renovation" };
+      return { service: "renovation", text: "Hi Cam, I'm enquiring about lawn renovation" };
     }
     if (p === "lawn-care-plans") {
-      return { service: "lawn", text: "Hi Cam, about a lawn care plan" };
+      return { service: "lawn", text: "Hi Cam, I'm enquiring about a lawn care plan" };
     }
     if (p === "lawn-feeding-seaweed") {
-      return { service: "lawn", text: "Hi Cam, about lawn feeding" };
+      return { service: "lawn", text: "Hi Cam, I'm enquiring about lawn feeding" };
     }
     /* home and anything else → general */
-    return { service: "general", text: "Hi Cam, I found you on your website" };
+    return { service: "general", text: "Hi Cam, I'm enquiring about lawn and garden care" };
   }
   var PAGE = pageContact();
   /* Every injected WhatsApp button invites a postcode so the visitor only has to
