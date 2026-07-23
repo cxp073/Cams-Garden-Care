@@ -444,6 +444,13 @@ body > footer .footer-tagline {
   color: var(--cream);
 }
 .contact-buttons .cb-get-a-mow:hover { background: var(--cream); color: var(--green-darker); }
+/* Hero button pair: WhatsApp leads as the solid cb-get-a-mow, Call reads as the
+   outline secondary beneath it. Both hero types — the injected mounts and the
+   hardcoded garforth/hedges heroes — sit inside <header class="hero">, and the
+   contact section does not, so this scopes the outline Call to heroes only and
+   leaves the contact section's equal cream pair untouched. */
+.hero .contact-buttons .cb-call { background: transparent; color: var(--cream); }
+.hero .contact-buttons .cb-call:hover { background: var(--cream); color: var(--green-deep); }
 @media (max-width: 600px) {
   .contact-buttons { flex-direction: column; max-width: 340px; }
   .contact-buttons .cb-btn { width: 100%; }
